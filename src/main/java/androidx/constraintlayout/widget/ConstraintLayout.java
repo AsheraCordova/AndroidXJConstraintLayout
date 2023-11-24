@@ -37,6 +37,7 @@ public class ConstraintLayout extends ViewGroup {
   protected boolean mDirtyHierarchy=true;
   private int mOptimizationLevel=Optimizer.OPTIMIZATION_STANDARD;
   private ConstraintSet mConstraintSet=null;
+  protected ConstraintLayoutStates mConstraintLayoutSpec=null;
   private int mConstraintSetId=-1;
   private HashMap<String,Integer> mDesignIds=new HashMap<>();
   private int mLastMeasureWidth=-1;
@@ -48,6 +49,13 @@ public class ConstraintLayout extends ViewGroup {
   private SparseArray<ConstraintWidget> mTempMapIdToWidget=new SparseArray<>();
   public final static int DESIGN_INFO_ID=0;
   private Metrics mMetrics;
+  private static SharedValues sSharedValues=null;
+  public static SharedValues getSharedValues(){
+    if (sSharedValues == null) {
+      sSharedValues=new SharedValues();
+    }
+    return sSharedValues;
+  }
   public void setDesignInformation(  int type,  Object value1,  Object value2){
     if (type == DESIGN_INFO_ID && value1 instanceof String && value2 instanceof Integer) {
       if (mDesignIds == null) {
@@ -1327,6 +1335,9 @@ leftMargin=originalLeftMargin;
 }
 }
 }
+}
+public String getConstraintTag(){
+return constraintTag;
 }
 }
 public void requestLayout(){

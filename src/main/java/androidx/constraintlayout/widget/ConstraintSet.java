@@ -3,6 +3,7 @@ import r.android.content.Context;
 import r.android.os.Build;
 import r.android.os.Build.VERSION_CODES;
 import r.android.util.Log;
+import r.android.util.SparseArray;
 import r.android.view.View;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.HelperWidget;
@@ -163,6 +164,121 @@ public class ConstraintSet {
   private static final String KEY_WEIGHT="weight";
   private static final String KEY_RATIO="ratio";
   private static final String KEY_PERCENT_PARENT="parent";
+  public Constraint getParameters(  int mId){
+    return get(mId);
+  }
+  public void readFallback(  ConstraintSet set){
+    for (    Integer key : set.mConstraints.keySet()) {
+      int id=key;
+      Constraint parent=set.mConstraints.get(key);
+      if (!mConstraints.containsKey(id)) {
+        mConstraints.put(id,new Constraint());
+      }
+      Constraint constraint=mConstraints.get(id);
+      if (constraint == null) {
+        continue;
+      }
+      if (!constraint.layout.mApply) {
+        constraint.layout.copyFrom(parent.layout);
+      }
+      if (!constraint.propertySet.mApply) {
+        constraint.propertySet.copyFrom(parent.propertySet);
+      }
+      if (!constraint.transform.mApply) {
+        constraint.transform.copyFrom(parent.transform);
+      }
+      if (!constraint.motion.mApply) {
+        constraint.motion.copyFrom(parent.motion);
+      }
+      for (      String s : parent.mCustomConstraints.keySet()) {
+        if (!constraint.mCustomConstraints.containsKey(s)) {
+          constraint.mCustomConstraints.put(s,parent.mCustomConstraints.get(s));
+        }
+      }
+    }
+  }
+  public void readFallback(  ConstraintLayout constraintLayout){
+    int count=constraintLayout.getChildCount();
+    for (int i=0; i < count; i++) {
+      View view=constraintLayout.getChildAt(i);
+      ConstraintLayout.LayoutParams param=(ConstraintLayout.LayoutParams)view.getLayoutParams();
+      int id=view.getId();
+      if (mForceId && id == -1) {
+        throw new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");
+      }
+      if (!mConstraints.containsKey(id)) {
+        mConstraints.put(id,new Constraint());
+      }
+      Constraint constraint=mConstraints.get(id);
+      if (constraint == null) {
+        continue;
+      }
+      if (!constraint.layout.mApply) {
+        constraint.fillFrom(id,param);
+        if (view instanceof ConstraintHelper) {
+          constraint.layout.mReferenceIds=((ConstraintHelper)view).getReferencedIds();
+          if (view instanceof Barrier) {
+            Barrier barrier=(Barrier)view;
+            constraint.layout.mBarrierAllowsGoneWidgets=barrier.getAllowsGoneWidget();
+            constraint.layout.mBarrierDirection=barrier.getType();
+            constraint.layout.mBarrierMargin=barrier.getMargin();
+          }
+        }
+        constraint.layout.mApply=true;
+      }
+      if (!constraint.propertySet.mApply) {
+        constraint.propertySet.visibility=view.getVisibility();
+        constraint.propertySet.alpha=view.getAlpha();
+        constraint.propertySet.mApply=true;
+      }
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (!constraint.transform.mApply) {
+          constraint.transform.mApply=true;
+          constraint.transform.rotation=view.getRotation();
+          constraint.transform.rotationX=view.getRotationX();
+          constraint.transform.rotationY=view.getRotationY();
+          constraint.transform.scaleX=view.getScaleX();
+          constraint.transform.scaleY=view.getScaleY();
+          float pivotX=view.getPivotX();
+          float pivotY=view.getPivotY();
+          if (pivotX != 0.0 || pivotY != 0.0) {
+            constraint.transform.transformPivotX=pivotX;
+            constraint.transform.transformPivotY=pivotY;
+          }
+          constraint.transform.translationX=view.getTranslationX();
+          constraint.transform.translationY=view.getTranslationY();
+          if (Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+            constraint.transform.translationZ=view.getTranslationZ();
+            if (constraint.transform.applyElevation) {
+              constraint.transform.elevation=view.getElevation();
+            }
+          }
+        }
+      }
+    }
+  }
+  public void applyDeltaFrom(  ConstraintSet cs){
+    for (    Constraint from : cs.mConstraints.values()) {
+      if (from.mDelta != null) {
+        if (from.mTargetString != null) {
+          int count=0;
+          for (          int key : mConstraints.keySet()) {
+            Constraint potential=getConstraint(key);
+            if (potential.layout.mConstraintTag != null) {
+              if (from.mTargetString.matches(potential.layout.mConstraintTag)) {
+                from.mDelta.applyDelta(potential);
+                potential.mCustomConstraints.putAll((HashMap)from.mCustomConstraints.clone());
+              }
+            }
+          }
+        }
+ else {
+          Constraint constraint=getConstraint(from.mViewId);
+          from.mDelta.applyDelta(constraint);
+        }
+      }
+    }
+  }
 public static class Layout {
     public boolean mIsGuideline=false;
     public boolean mApply=false;
@@ -473,10 +589,37 @@ static class Delta {
       private static final int INITIAL_INT=10;
       private static final int INITIAL_FLOAT=10;
       private static final int INITIAL_STRING=5;
+      int[] mTypeInt=new int[INITIAL_INT];
+      int[] mValueInt=new int[INITIAL_INT];
       int mCountInt=0;
+      int[] mTypeFloat=new int[INITIAL_FLOAT];
+      float[] mValueFloat=new float[INITIAL_FLOAT];
       int mCountFloat=0;
+      int[] mTypeString=new int[INITIAL_STRING];
+      String[] mValueString=new String[INITIAL_STRING];
       int mCountString=0;
+      int[] mTypeBoolean=new int[INITIAL_BOOLEAN];
+      boolean[] mValueBoolean=new boolean[INITIAL_BOOLEAN];
       int mCountBoolean=0;
+      void applyDelta(      Constraint c){
+        for (int i=0; i < mCountInt; i++) {
+          setDeltaValue(c,mTypeInt[i],mValueInt[i]);
+        }
+        for (int i=0; i < mCountFloat; i++) {
+          setDeltaValue(c,mTypeFloat[i],mValueFloat[i]);
+        }
+        for (int i=0; i < mCountString; i++) {
+          setDeltaValue(c,mTypeString[i],mValueString[i]);
+        }
+        for (int i=0; i < mCountBoolean; i++) {
+          setDeltaValue(c,mTypeBoolean[i],mValueBoolean[i]);
+        }
+      }
+    }
+    public void applyDelta(    Constraint c){
+      if (mDelta != null) {
+        mDelta.applyDelta(c);
+      }
     }
     public Constraint clone(){
       Constraint clone=new Constraint();
@@ -488,7 +631,7 @@ static class Delta {
       clone.mDelta=mDelta;
       return clone;
     }
-    private void fillFromConstraints(    ConstraintHelper helper,    int viewId,    Constraints.LayoutParams param){
+    public void fillFromConstraints(    ConstraintHelper helper,    int viewId,    Constraints.LayoutParams param){
       fillFromConstraints(viewId,param);
       if (helper instanceof Barrier) {
         layout.mHelperType=BARRIER_TYPE;
@@ -498,7 +641,7 @@ static class Delta {
         layout.mBarrierMargin=barrier.getMargin();
       }
     }
-    private void fillFromConstraints(    int viewId,    Constraints.LayoutParams param){
+    public void fillFromConstraints(    int viewId,    Constraints.LayoutParams param){
       fillFrom(viewId,param);
       propertySet.alpha=param.alpha;
       transform.rotation=param.rotation;
@@ -731,6 +874,45 @@ static class Delta {
     applyToInternal(constraintLayout,true);
     constraintLayout.setConstraintSet(null);
     constraintLayout.requestLayout();
+  }
+  public void applyCustomAttributes(  ConstraintLayout constraintLayout){
+    int count=constraintLayout.getChildCount();
+    for (int i=0; i < count; i++) {
+      View view=constraintLayout.getChildAt(i);
+      int id=view.getId();
+      if (!mConstraints.containsKey(id)) {
+        Log.w(TAG,"id unknown " + CLDebug.getName(view));
+        continue;
+      }
+      if (mForceId && id == -1) {
+        throw new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");
+      }
+      if (mConstraints.containsKey(id)) {
+        Constraint constraint=mConstraints.get(id);
+        if (constraint == null) {
+          continue;
+        }
+        ConstraintAttribute.setAttributes(view,constraint.mCustomConstraints);
+      }
+    }
+  }
+  public void applyToHelper(  ConstraintHelper helper,  ConstraintWidget child,  LayoutParams layoutParams,  SparseArray<ConstraintWidget> mapIdToWidget){
+    int id=helper.getId();
+    if (mConstraints.containsKey(id)) {
+      Constraint constraint=mConstraints.get(id);
+      if (constraint != null && child instanceof HelperWidget) {
+        HelperWidget helperWidget=(HelperWidget)child;
+        helper.loadParameters(constraint,helperWidget,layoutParams,mapIdToWidget);
+      }
+    }
+  }
+  public void applyToLayoutParams(  int id,  ConstraintLayout.LayoutParams layoutParams){
+    if (mConstraints.containsKey(id)) {
+      Constraint constraint=mConstraints.get(id);
+      if (constraint != null) {
+        constraint.applyTo(layoutParams);
+      }
+    }
   }
   void applyToInternal(  ConstraintLayout constraintLayout,  boolean applyPostLayout){
     int count=constraintLayout.getChildCount();
@@ -1388,6 +1570,18 @@ get(viewId).layout.dimensionRatio=ratio;
 public void setVisibility(int viewId,int visibility){
 get(viewId).propertySet.visibility=visibility;
 }
+public int getVisibilityMode(int viewId){
+return get(viewId).propertySet.mVisibilityMode;
+}
+public int getVisibility(int viewId){
+return get(viewId).propertySet.visibility;
+}
+public int getHeight(int viewId){
+return get(viewId).layout.mHeight;
+}
+public int getWidth(int viewId){
+return get(viewId).layout.mWidth;
+}
 public void setAlpha(int viewId,float alpha){
 get(viewId).propertySet.alpha=alpha;
 }
@@ -1625,7 +1819,7 @@ public void setBarrierType(int id,int type){
 Constraint constraint=get(id);
 constraint.layout.mHelperType=type;
 }
-private Constraint get(int id){
+public Constraint get(int id){
 if (!mConstraints.containsKey(id)) {
 mConstraints.put(id,new Constraint());
 }
@@ -1649,6 +1843,273 @@ case END:
 return "end";
 }
 return "undefined";
+}
+private static void setDeltaValue(Constraint c,int type,float value){
+switch (type) {
+case GUIDE_PERCENT:
+c.layout.guidePercent=value;
+break;
+case CIRCLE_ANGLE:
+c.layout.circleAngle=value;
+break;
+case HORIZONTAL_BIAS:
+c.layout.horizontalBias=value;
+break;
+case VERTICAL_BIAS:
+c.layout.verticalBias=value;
+break;
+case ALPHA:
+c.propertySet.alpha=value;
+break;
+case ELEVATION:
+c.transform.elevation=value;
+c.transform.applyElevation=true;
+break;
+case ROTATION:
+c.transform.rotation=value;
+break;
+case ROTATION_X:
+c.transform.rotationX=value;
+break;
+case ROTATION_Y:
+c.transform.rotationY=value;
+break;
+case SCALE_X:
+c.transform.scaleX=value;
+break;
+case SCALE_Y:
+c.transform.scaleY=value;
+break;
+case TRANSFORM_PIVOT_X:
+c.transform.transformPivotX=value;
+break;
+case TRANSFORM_PIVOT_Y:
+c.transform.transformPivotY=value;
+break;
+case TRANSLATION_X:
+c.transform.translationX=value;
+break;
+case TRANSLATION_Y:
+c.transform.translationY=value;
+break;
+case TRANSLATION_Z:
+c.transform.translationZ=value;
+break;
+case VERTICAL_WEIGHT:
+c.layout.verticalWeight=value;
+break;
+case HORIZONTAL_WEIGHT:
+c.layout.horizontalWeight=value;
+break;
+case WIDTH_PERCENT:
+c.layout.widthPercent=value;
+break;
+case HEIGHT_PERCENT:
+c.layout.heightPercent=value;
+break;
+case PROGRESS:
+c.propertySet.mProgress=value;
+break;
+case TRANSITION_PATH_ROTATE:
+c.motion.mPathRotate=value;
+break;
+case MOTION_STAGGER:
+c.motion.mMotionStagger=value;
+break;
+case QUANTIZE_MOTION_PHASE:
+c.motion.mQuantizeMotionPhase=value;
+break;
+case UNUSED:
+break;
+default :
+Log.w(TAG,"Unknown attribute 0x");
+}
+}
+private static void setDeltaValue(Constraint c,int type,int value){
+switch (type) {
+case EDITOR_ABSOLUTE_X:
+c.layout.editorAbsoluteX=value;
+break;
+case EDITOR_ABSOLUTE_Y:
+c.layout.editorAbsoluteY=value;
+break;
+case LAYOUT_WRAP_BEHAVIOR:
+c.layout.mWrapBehavior=value;
+break;
+case GUIDE_BEGIN:
+c.layout.guideBegin=value;
+break;
+case GUIDE_END:
+c.layout.guideEnd=value;
+break;
+case ORIENTATION:
+c.layout.orientation=value;
+break;
+case CIRCLE:
+c.layout.circleConstraint=value;
+break;
+case CIRCLE_RADIUS:
+c.layout.circleRadius=value;
+break;
+case GONE_LEFT_MARGIN:
+c.layout.goneLeftMargin=value;
+break;
+case GONE_TOP_MARGIN:
+c.layout.goneTopMargin=value;
+break;
+case GONE_RIGHT_MARGIN:
+c.layout.goneRightMargin=value;
+break;
+case GONE_BOTTOM_MARGIN:
+c.layout.goneBottomMargin=value;
+break;
+case GONE_START_MARGIN:
+c.layout.goneStartMargin=value;
+break;
+case GONE_END_MARGIN:
+c.layout.goneEndMargin=value;
+break;
+case GONE_BASELINE_MARGIN:
+c.layout.goneBaselineMargin=value;
+break;
+case LEFT_MARGIN:
+c.layout.leftMargin=value;
+break;
+case RIGHT_MARGIN:
+c.layout.rightMargin=value;
+break;
+case START_MARGIN:
+c.layout.startMargin=value;
+break;
+case END_MARGIN:
+c.layout.endMargin=value;
+break;
+case TOP_MARGIN:
+c.layout.topMargin=value;
+break;
+case BOTTOM_MARGIN:
+c.layout.bottomMargin=value;
+break;
+case BASELINE_MARGIN:
+c.layout.baselineMargin=value;
+break;
+case LAYOUT_WIDTH:
+c.layout.mWidth=value;
+break;
+case LAYOUT_HEIGHT:
+c.layout.mHeight=value;
+break;
+case WIDTH_DEFAULT:
+c.layout.widthDefault=value;
+break;
+case HEIGHT_DEFAULT:
+c.layout.heightDefault=value;
+break;
+case HEIGHT_MAX:
+c.layout.heightMax=value;
+break;
+case WIDTH_MAX:
+c.layout.widthMax=value;
+break;
+case HEIGHT_MIN:
+c.layout.heightMin=value;
+break;
+case WIDTH_MIN:
+c.layout.widthMin=value;
+break;
+case LAYOUT_VISIBILITY:
+c.propertySet.visibility=value;
+break;
+case VISIBILITY_MODE:
+c.propertySet.mVisibilityMode=value;
+break;
+case TRANSFORM_PIVOT_TARGET:
+c.transform.transformPivotTarget=value;
+break;
+case VERTICAL_STYLE:
+c.layout.verticalChainStyle=value;
+break;
+case HORIZONTAL_STYLE:
+c.layout.horizontalChainStyle=value;
+break;
+case VIEW_ID:
+c.mViewId=value;
+break;
+case ANIMATE_RELATIVE_TO:
+c.motion.mAnimateRelativeTo=value;
+break;
+case ANIMATE_CIRCLE_ANGLE_TO:
+c.motion.mAnimateCircleAngleTo=value;
+break;
+case PATH_MOTION_ARC:
+c.motion.mPathMotionArc=value;
+break;
+case QUANTIZE_MOTION_STEPS:
+c.motion.mQuantizeMotionSteps=value;
+break;
+case QUANTIZE_MOTION_INTERPOLATOR_TYPE:
+c.motion.mQuantizeInterpolatorType=value;
+break;
+case QUANTIZE_MOTION_INTERPOLATOR_ID:
+c.motion.mQuantizeInterpolatorID=value;
+break;
+case DRAW_PATH:
+c.motion.mDrawPath=value;
+break;
+case BARRIER_DIRECTION:
+c.layout.mBarrierDirection=value;
+break;
+case BARRIER_MARGIN:
+c.layout.mBarrierMargin=value;
+break;
+case UNUSED:
+break;
+default :
+Log.w(TAG,"Unknown attribute 0x");
+}
+}
+private static void setDeltaValue(Constraint c,int type,String value){
+switch (type) {
+case DIMENSION_RATIO:
+c.layout.dimensionRatio=value;
+break;
+case TRANSITION_EASING:
+c.motion.mTransitionEasing=value;
+break;
+case QUANTIZE_MOTION_INTERPOLATOR_STR:
+c.motion.mQuantizeInterpolatorString=value;
+break;
+case CONSTRAINT_REFERENCED_IDS:
+c.layout.mReferenceIdString=value;
+break;
+case CONSTRAINT_TAG:
+c.layout.mConstraintTag=value;
+break;
+case UNUSED:
+break;
+default :
+Log.w(TAG,"Unknown attribute 0x");
+}
+}
+private static void setDeltaValue(Constraint c,int type,boolean value){
+switch (type) {
+case CONSTRAINED_WIDTH:
+c.layout.constrainedWidth=value;
+break;
+case CONSTRAINED_HEIGHT:
+c.layout.constrainedHeight=value;
+break;
+case ELEVATION:
+c.transform.applyElevation=value;
+break;
+case BARRIER_ALLOWS_GONE_WIDGETS:
+c.layout.mBarrierAllowsGoneWidgets=value;
+break;
+case UNUSED:
+break;
+default :
+Log.w(TAG,"Unknown attribute 0x");
+}
 }
 private int[] convertReferenceString(View view,String referenceIdString){
 String[] split=referenceIdString.split(",");
@@ -1682,5 +2143,20 @@ if (count != split.length) {
 tags=Arrays.copyOf(tags,count);
 }
 return tags;
+}
+public Constraint getConstraint(int id){
+if (mConstraints.containsKey(id)) {
+return mConstraints.get(id);
+}
+return null;
+}
+public boolean isForceId(){
+return mForceId;
+}
+public void setForceId(boolean forceId){
+this.mForceId=forceId;
+}
+public void setValidateOnParse(boolean validate){
+mValidate=validate;
 }
 }

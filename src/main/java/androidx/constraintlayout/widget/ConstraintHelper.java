@@ -20,6 +20,7 @@ public abstract class ConstraintHelper extends View {
   protected Helper mHelperWidget;
   protected boolean mUseViewMeasure=false;
   protected String mReferenceIds;
+  private View[] mViews=null;
   protected HashMap<Integer,String> mMap=new HashMap<>();
   public void addView(  View view){
     if (view == this) {
@@ -245,6 +246,16 @@ public abstract class ConstraintHelper extends View {
       int id=mIds[i];
       helper.add(map.get(id));
     }
+  }
+  protected View[] getViews(  ConstraintLayout layout){
+    if (mViews == null || mViews.length != mCount) {
+      mViews=new View[mCount];
+    }
+    for (int i=0; i < mCount; i++) {
+      int id=mIds[i];
+      mViews[i]=layout.getViewById(id);
+    }
+    return mViews;
   }
   public void updatePostLayout(  ConstraintLayout container){
   }
