@@ -791,6 +791,14 @@ return mCurrentTransition.mDuration;
 }
 return mDefaultDuration;
 }
+public void setDuration(int duration){
+if (mCurrentTransition != null) {
+mCurrentTransition.setDuration(duration);
+}
+ else {
+mDefaultDuration=duration;
+}
+}
 public int gatPathMotionArc(){
 return (mCurrentTransition != null) ? mCurrentTransition.mPathMotionArc : UNSET;
 }

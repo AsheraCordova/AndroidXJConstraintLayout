@@ -87,6 +87,8 @@ public class MotionLayout extends ConstraintLayout {
   float mScrollTargetDY;
   float mScrollTargetDT;
   private boolean mKeepAnimating=false;
+  private ArrayList<MotionHelper> mOnShowHelpers=null;
+  private ArrayList<MotionHelper> mOnHideHelpers=null;
   private ArrayList<MotionHelper> mDecoratorsHelpers=null;
   private CopyOnWriteArrayList<TransitionListener> mTransitionListeners=null;
   private int mFrames=0;
@@ -1670,6 +1672,61 @@ listeners.onTransitionCompleted(this,state);
 }
 mTransitionCompleted.clear();
 }
+public void onViewAdded(View view){
+super.onViewAdded(view);
+if (view instanceof MotionHelper) {
+MotionHelper helper=(MotionHelper)view;
+if (mTransitionListeners == null) {
+mTransitionListeners=new CopyOnWriteArrayList<>();
+}
+mTransitionListeners.add(helper);
+if (helper.isUsedOnShow()) {
+if (mOnShowHelpers == null) {
+mOnShowHelpers=new ArrayList<>();
+}
+mOnShowHelpers.add(helper);
+}
+if (helper.isUseOnHide()) {
+if (mOnHideHelpers == null) {
+mOnHideHelpers=new ArrayList<>();
+}
+mOnHideHelpers.add(helper);
+}
+if (helper.isDecorator()) {
+if (mDecoratorsHelpers == null) {
+mDecoratorsHelpers=new ArrayList<>();
+}
+mDecoratorsHelpers.add(helper);
+}
+}
+}
+public void onViewRemoved(View view){
+super.onViewRemoved(view);
+if (mOnShowHelpers != null) {
+mOnShowHelpers.remove(view);
+}
+if (mOnHideHelpers != null) {
+mOnHideHelpers.remove(view);
+}
+}
+public void setOnShow(float progress){
+if (mOnShowHelpers != null) {
+final int count=mOnShowHelpers.size();
+for (int i=0; i < count; i++) {
+MotionHelper helper=mOnShowHelpers.get(i);
+helper.setProgress(progress);
+}
+}
+}
+public void setOnHide(float progress){
+if (mOnHideHelpers != null) {
+final int count=mOnHideHelpers.size();
+for (int i=0; i < count; i++) {
+MotionHelper helper=mOnHideHelpers.get(i);
+helper.setProgress(progress);
+}
+}
+}
 public int[] getConstraintSetIds(){
 if (mScene == null) {
 return null;
@@ -1699,11 +1756,24 @@ public void updateState(){
 mModel.initFrom(mLayoutWidget,mScene.getConstraintSet(mBeginState),mScene.getConstraintSet(mEndState));
 rebuildScene();
 }
+public ArrayList<MotionScene.Transition> getDefinedTransitions(){
+if (mScene == null) {
+return null;
+}
+return mScene.getDefinedTransitions();
+}
 public int getStartState(){
 return mBeginState;
 }
 public int getEndState(){
 return mEndState;
+}
+public void setTransitionDuration(int milliseconds){
+if (mScene == null) {
+Log.e(TAG,"MotionScene not defined");
+return;
+}
+mScene.setDuration(milliseconds);
 }
 public MotionScene.Transition getTransition(int id){
 return mScene.getTransitionById(id);
