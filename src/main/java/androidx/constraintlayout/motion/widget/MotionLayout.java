@@ -1093,12 +1093,12 @@ int optimisationLevel=getOptimizationLevel();
 if (mCurrentState == getStartState()) {
 resolveSystem(mLayoutEnd,optimisationLevel,(mEnd == null || mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd == null || mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 if (mStart != null) {
-resolveSystem(mLayoutStart,optimisationLevel,(mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutStart,optimisationLevel,(mStart == null || mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart == null || mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
 }
  else {
 if (mStart != null) {
-resolveSystem(mLayoutStart,optimisationLevel,(mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutStart,optimisationLevel,(mStart == null || mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart == null || mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
 resolveSystem(mLayoutEnd,optimisationLevel,(mEnd == null || mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd == null || mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
@@ -1110,16 +1110,16 @@ if (recompute_start_end_size) {
 mWidthMeasureMode=widthMode;
 mHeightMeasureMode=heightMode;
 if (mCurrentState == getStartState()) {
-resolveSystem(mLayoutEnd,optimisationLevel,(mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutEnd,optimisationLevel,(mEnd == null || mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd == null || mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 if (mStart != null) {
-resolveSystem(mLayoutStart,optimisationLevel,(mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutStart,optimisationLevel,(mStart == null || mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart == null || mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
 }
  else {
 if (mStart != null) {
-resolveSystem(mLayoutStart,optimisationLevel,(mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutStart,optimisationLevel,(mStart == null || mStart.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mStart == null || mStart.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
-resolveSystem(mLayoutEnd,optimisationLevel,(mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
+resolveSystem(mLayoutEnd,optimisationLevel,(mEnd == null || mEnd.mRotate == 0) ? widthMeasureSpec : heightMeasureSpec,(mEnd == null || mEnd.mRotate == 0) ? heightMeasureSpec : widthMeasureSpec);
 }
 mStartWrapWidth=mLayoutStart.getWidth();
 mStartWrapHeight=mLayoutStart.getHeight();
