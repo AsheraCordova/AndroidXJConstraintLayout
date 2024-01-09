@@ -1269,7 +1269,7 @@ requestLayout();
 }
 setMeasuredDimension(androidLayoutWidth,androidLayoutHeight);
 }
-evaluateLayout();
+if (!reduceFlicker) {setRedraw(false);evaluateLayout();setRedraw(true);}
 }
 private void evaluateLayout(){
 float dir=Math.signum(mTransitionGoalPosition - mTransitionLastPosition);
@@ -1314,7 +1314,7 @@ if (mMeasureDuringTransition) {
 requestLayout();
 }
 }
-void endTrigger(boolean start){
+void endTrigger(boolean start){if (reduceFlicker) {evaluateLayout();}
 int n=getChildCount();
 for (int i=0; i < n; i++) {
 final View child=getChildAt(i);
@@ -1789,6 +1789,7 @@ mScene.viewTransition(viewTransitionId,view);
 Log.e(TAG," no motionScene");
 }
 }
+private boolean reduceFlicker;
 public void initMotionScene(){
 mScene=new MotionScene(this);
 }
@@ -1799,7 +1800,9 @@ com.ashera.widget.PluginInvoker.enqueueTaskForEventLoop(this::run,System.current
 private void run(){
 if (mLayoutWidget != null) {
 try {
+setRedraw(false);
 evaluate(false);
+setRedraw(true);
 }
  catch (Exception e) {
 }
@@ -1807,6 +1810,9 @@ evaluate(false);
 }
 public MotionScene getScene(){
 return mScene;
+}
+public void setReduceFlicker(boolean reduceFlicker){
+this.reduceFlicker=reduceFlicker;
 }
 public void postInit(){
 if (mCurrentState == UNSET && mScene != null) {

@@ -135,9 +135,9 @@ public interface Adapter {
   }
   Runnable mUpdateRunnable=new Runnable(){
     public void run(){
-      mMotionLayout.setProgress(0);
+      mMotionLayout.setRedraw(false);mMotionLayout.setProgress(0);
       updateItems();mMotionLayout.remeasure();
-      mAdapter.onNewItem(mIndex);
+      mAdapter.onNewItem(mIndex);mMotionLayout.setRedraw(true);
       float velocity=mMotionLayout.getVelocity();
       if (touchUpMode == TOUCH_UP_CARRY_ON && velocity > velocityThreshold && mIndex < mAdapter.count() - 1) {
         final float v=velocity * dampening;
