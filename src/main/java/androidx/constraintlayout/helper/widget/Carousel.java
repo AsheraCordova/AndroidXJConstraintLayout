@@ -166,7 +166,7 @@ public interface Adapter {
  else {
       return;
     }
-    for (int i=0; i < mCount; i++) {
+    mList.clear();for (int i=0; i < mCount; i++) {
       int id=mIds[i];
       View view=container.getViewById(id);
       if (firstViewReference == id) {
