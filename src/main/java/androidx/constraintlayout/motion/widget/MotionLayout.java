@@ -1790,8 +1790,8 @@ Log.e(TAG," no motionScene");
 }
 }
 private boolean reduceFlicker;
-public void initMotionScene(){
-mScene=new MotionScene(this);
+public void setScene(MotionScene scene){
+mScene=scene;
 }
 @Override public void invalidate(){
 super.invalidate();

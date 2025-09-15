@@ -66,7 +66,7 @@ public class CoreBarrier extends HelperWidget {
      * can be accessed as a property from Kotlin; {@see https://android.github.io/kotlin-guides/interop.html#property-prefixes}.
      * Use {@link #getAllowsGoneWidget()} instead.
      */
-    @Deprecated
+    //@Deprecated
     public boolean allowsGoneWidget() { return mAllowsGoneWidget; }
 
     /**

@@ -484,7 +484,7 @@ public static class TransitionOnClick implements View.OnClickListener {
         listen|=((mMode & ANIM_TO_END) != 0) && currentState == start;
         listen|=((mMode & ANIM_TO_START) != 0) && currentState == end;
         listen|=((mMode & JUMP_TO_START) != 0) && currentState == end;
-        if (true || listen) {
+        if (listen) {
           v.setMyAttribute("onClick",this);
         }
       }
