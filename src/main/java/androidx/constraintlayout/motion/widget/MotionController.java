@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -124,7 +139,7 @@ public class MotionController {
     private Interpolator mQuantizeMotionInterpolator = null;
     private boolean mNoMovement = false;
 
-    /**
+   /**
      * Get the view to pivot around
      *
      * @return id of view or UNSET if not set
@@ -133,7 +148,7 @@ public class MotionController {
         return mTransformPivotTarget;
     }
 
-    /**
+   /**
      * Set a view to pivot around
      *
      * @param transformPivotTarget id of view
@@ -151,7 +166,7 @@ public class MotionController {
         setView(view);
     }
 
-    /**
+   /**
      * get the left most position of the widget at the start of the movement.
      *
      * @return the left most position
@@ -160,7 +175,7 @@ public class MotionController {
         return mStartMotionPath.x;
     }
 
-    /**
+   /**
      * get the top most position of the widget at the start of the movement.
      * Positive is down.
      *
@@ -170,7 +185,7 @@ public class MotionController {
         return mStartMotionPath.y;
     }
 
-    /**
+   /**
      * get the left most position of the widget at the end of the movement.
      *
      * @return the left most position
@@ -179,7 +194,7 @@ public class MotionController {
         return mEndMotionPath.x;
     }
 
-    /**
+   /**
      * get the top most position of the widget at the end of the movement.
      * Positive is down.
      *
@@ -189,7 +204,7 @@ public class MotionController {
         return mEndMotionPath.y;
     }
 
-    /**
+   /**
      * get the width of the widget at the start of the movement.
      *
      * @return the width at the start
@@ -198,7 +213,7 @@ public class MotionController {
         return mStartMotionPath.width;
     }
 
-    /**
+   /**
      * get the width of the widget at the start of the movement.
      *
      * @return the height at the start
@@ -207,7 +222,7 @@ public class MotionController {
         return mStartMotionPath.height;
     }
 
-    /**
+   /**
      * get the width of the widget at the end of the movement.
      *
      * @return the width at the end
@@ -216,7 +231,7 @@ public class MotionController {
         return mEndMotionPath.width;
     }
 
-    /**
+   /**
      * get the width of the widget at the end of the movement.
      *
      * @return the height at the end
@@ -225,7 +240,7 @@ public class MotionController {
         return mEndMotionPath.height;
     }
 
-    /**
+   /**
      * Will return the id of the view to move relative to
      * The position at the start and then end will be viewed relative to this view
      * -1 is the return value if NOT in polar mode
@@ -259,7 +274,7 @@ public class MotionController {
         mStartMotionPath.getCenter(p, mInterpolateVariables, position, pos, velocity, vel);
     }
 
-    /**
+   /**
      * fill the array point with the center coordinates point[0] is filled with the
      * x coordinate of "time" 0.0 mPoints[point.length-1] is filled with the y coordinate of "time"
      * 1.0
@@ -346,7 +361,7 @@ public class MotionController {
         return mInterpolateData;
     }
 
-    /**
+   /**
      * fill the array point with the center coordinates point[0] is filled with the
      * x coordinate of "time" 0.0 mPoints[point.length-1] is filled with the y coordinate of "time"
      * 1.0
@@ -617,7 +632,7 @@ public class MotionController {
         mPathMotionArc = arc;
     }
 
-    /**
+   /**
      * Called after all TimePoints & Cycles have been added;
      * Spines are evaluated
      */
@@ -969,7 +984,7 @@ public class MotionController {
         //--------------------------- end cycle support ----------------
     }
 
-    /**
+   /**
      * Debug string
      *
      * @return
@@ -1154,7 +1169,7 @@ public class MotionController {
         mEndPoint.setState(v);
     }
 
-    /**
+   /**
      * Calculates the adjusted (and optional velocity)
      * Note if requesting velocity staggering is not considered
      *
@@ -1217,7 +1232,7 @@ public class MotionController {
             }
     }
 
-    /**
+   /**
      * The main driver of interpolation
      *
      * @param child
@@ -1371,7 +1386,7 @@ public class MotionController {
         return timeAnimation;
     }
 
-    /**
+   /**
      * This returns the differential with respect to the animation layout position (Progress)
      * of a point on the view (post layout effects are not computed)
      *
@@ -1413,7 +1428,7 @@ public class MotionController {
         mAnchorDpDt[1] = dTop * (1 - locationY) + dBottom * (locationY);
     }
 
-    /**
+   /**
      * This returns the differential with respect to the animation post layout transform
      * of a point on the view
      *
@@ -1525,7 +1540,7 @@ public class MotionController {
         key.positionAttributes(view, start, end, x, y, attribute, value);
     }
 
-    /**
+   /**
      * Get the keyFrames for the view controlled by this MotionController
      *
      * @param type is position(0-100) + 1000*mType(1=Attributes, 2=Position, 3=TimeCycle 4=Cycle 5=Trigger
@@ -1546,7 +1561,7 @@ public class MotionController {
         return i;
     }
 
-    /**
+   /**
      * Get the keyFrames for the view controlled by this MotionController
      * the info data structure is of the the form
      * 0 length if your are at index i the [i+len+1] is the next entry

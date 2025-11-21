@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2019 The Android Open Source Project
  *
@@ -26,7 +41,7 @@ import r.android.util.Log;
 public class TransitionBuilder {
     private static final String TAG = "TransitionBuilder";
 
-    /**
+   /**
      * It validates if the motion layout is setup correctly or not. Use this for debugging purposes.
      *
      * @return true if layout has valid scene and transition.
@@ -46,7 +61,7 @@ public class TransitionBuilder {
         }
     }
 
-    /**
+   /**
      * Builder for a basic transition that transition from the startConstraintSet to
      * the endConstraintSet.
      *
@@ -69,7 +84,7 @@ public class TransitionBuilder {
         return transition;
     }
 
-    /**
+   /**
      * Ensure that motion scene understands the constraint set and its respective ids.
      */
     private static void updateConstraintSetInMotionScene(

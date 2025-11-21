@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -138,7 +153,7 @@ public class Easing {
             return 3 * t1 * t1 * y1 + 6 * t1 * t * (y2 - y1) + 3 * t * t * (1 - y2);
         }
 
-        /**
+       /**
          * binary search for the region
          * and linear interpolate the answer
          */
@@ -163,7 +178,7 @@ public class Easing {
             return (y2 - y1) / (x2 - x1);
         }
 
-        /**
+       /**
          * binary search for the region
          * and linear interpolate the answer
          */

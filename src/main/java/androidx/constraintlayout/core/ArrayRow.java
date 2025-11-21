@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -358,7 +373,7 @@ public class ArrayRow implements LinearSystem.Row {
         return this;
     }
 
-    /**
+   /**
      * Create a constraint to express {@code A = B + (C - D)} * ratio
      * We use this for ratio, where for example {@code Right = Left + (Bottom - Top) * percent}
      *
@@ -379,7 +394,7 @@ public class ArrayRow implements LinearSystem.Row {
         return this;
     }
 
-    /**
+   /**
      * Create a constraint to express At + (Ab-At)/2 = Bt + (Bb-Bt)/2 - angle
      *
      * @param at
@@ -419,7 +434,7 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    /**
+   /**
      * Pick a subject variable out of the existing ones.
      * - if a variable is unrestricted
      * - or if it's a negative new variable (not found elsewhere)
@@ -442,7 +457,7 @@ public class ArrayRow implements LinearSystem.Row {
         return addedExtra;
     }
 
-    /**
+   /**
      * Pick a subject variable out of the existing ones.
      * - if a variable is unrestricted
      * - or if it's a negative new variable (not found elsewhere)
@@ -504,7 +519,7 @@ public class ArrayRow implements LinearSystem.Row {
         return restrictedCandidate;
     }
 
-    /**
+   /**
      * Returns true if the variable is new to the system, i.e. is already present
      * in one of the rows. This function is called while choosing the subject of a new row.
      *
@@ -667,7 +682,7 @@ public class ArrayRow implements LinearSystem.Row {
         constantValue = 0;
     }
 
-    /**
+   /**
      * Used to initiate a goal from a given row (to see if we can remove an extra var)
      * @param row
      */

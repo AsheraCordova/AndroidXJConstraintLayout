@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2016 The Android Open Source Project
  *
@@ -25,17 +40,17 @@ import java.util.ArrayList;
 public class WidgetContainer extends ConstraintWidget {
     public ArrayList<ConstraintWidget> mChildren = new ArrayList<>();
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Construction
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Default constructor
      */
     public WidgetContainer() {
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param x      x position
@@ -47,7 +62,7 @@ public class WidgetContainer extends ConstraintWidget {
         super(x, y, width, height);
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param width  width of the layout
@@ -63,7 +78,7 @@ public class WidgetContainer extends ConstraintWidget {
         super.reset();
     }
 
-    /**
+   /**
      * Add a child widget
      *
      * @param widget to add
@@ -77,7 +92,7 @@ public class WidgetContainer extends ConstraintWidget {
         widget.setParent(this);
     }
 
-    /**
+   /**
      * Add multiple child widgets.
      *
      * @param widgets to add
@@ -89,7 +104,7 @@ public class WidgetContainer extends ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Remove a child widget
      *
      * @param widget to remove
@@ -99,7 +114,7 @@ public class WidgetContainer extends ConstraintWidget {
         widget.reset();
     }
 
-    /**
+   /**
      * Access the children
      *
      * @return the array of children
@@ -108,7 +123,7 @@ public class WidgetContainer extends ConstraintWidget {
         return mChildren;
     }
 
-    /**
+   /**
      * Return the top-level ConstraintWidgetContainer
      *
      * @return top-level ConstraintWidgetContainer
@@ -130,11 +145,11 @@ public class WidgetContainer extends ConstraintWidget {
         return container;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Overloaded methods from ConstraintWidget
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Set the offset of this widget relative to the root widget.
      * We then set the offset of our children as well.
      *
@@ -151,7 +166,7 @@ public class WidgetContainer extends ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Function implemented by ConstraintWidgetContainer
      */
     public void layout() {

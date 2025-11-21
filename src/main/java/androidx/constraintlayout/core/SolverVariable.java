@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -69,27 +84,27 @@ public class SolverVariable implements Comparable<SolverVariable> {
     int synonym = -1;
     float synonymDelta = 0;
 
-    /**
+   /**
      * Type of variables
      */
     public enum Type {
-        /**
+       /**
          * The variable can take negative or positive values
          */
         UNRESTRICTED,
-        /**
+       /**
          * The variable is actually not a variable :) , but a constant number
          */
         CONSTANT,
-        /**
+       /**
          * The variable is restricted to positive values and represents a slack
          */
         SLACK,
-        /**
+       /**
          * The variable is restricted to positive values and represents an error
          */
         ERROR,
-        /**
+       /**
          * Unknown (invalid) type.
          */
         UNKNOWN
@@ -116,7 +131,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         throw new AssertionError(type.name());
     }
 
-    /**
+   /**
      * Base constructor
      *  @param name the variable name
      * @param type the type of the variable
@@ -278,7 +293,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         Arrays.fill(goalStrengthVector, 0);
     }
 
-    /**
+   /**
      * Accessor for the name
      *
      * @return the name of the variable
@@ -300,7 +315,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         return this.id - v.id;
     }
 
-    /**
+   /**
      * Override the toString() method to display the variable
      */
     @Override

@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2019 The Android Open Source Project
  *
@@ -766,7 +781,7 @@ public class CoreFlow extends CoreVirtualLayout {
     // Measure Chain Wrap
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Measure the virtual layout using a list of chains for the children
      *  @param widgets     list of widgets
      * @param count
@@ -919,7 +934,7 @@ public class CoreFlow extends CoreVirtualLayout {
     // Measure No Wrap
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Measure the virtual layout using a single chain for the children
      *  @param widgets     list of widgets
      * @param count
@@ -955,7 +970,7 @@ public class CoreFlow extends CoreVirtualLayout {
     // Measure Aligned
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Measure the virtual layout arranging the children in a regular grid
      *
      * @param widgets     list of widgets
@@ -1209,7 +1224,7 @@ public class CoreFlow extends CoreVirtualLayout {
     // Add constraints to solver
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Add this widget to the solver
      *
      * @param system the solver we want to add the widget to

@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -34,7 +49,7 @@ public class StopLogic extends MotionInterpolator {
     private SpringStopEngine mSpringStopEngine;
     private StopEngine mEngine = mStopLogicEngine;
 
-    /**
+   /**
      * Debugging logic to log the state.
      *
      * @param desc Description to pre append
@@ -55,7 +70,7 @@ public class StopLogic extends MotionInterpolator {
         mStopLogicEngine.config(currentPos, destination, currentVelocity, maxTime, maxAcceleration, maxVelocity);
     }
 
-    /**
+   /**
      * This configure the stop logic to be a spring.
      * Moving from currentPosition(P0) to destination with an initial velocity of currentVelocity (V0)
      * moving as if it has a mass (m) with spring constant stiffness(k), and friction(c)

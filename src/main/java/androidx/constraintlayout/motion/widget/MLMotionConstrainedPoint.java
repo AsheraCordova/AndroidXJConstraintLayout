@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -84,7 +99,7 @@ class MLMotionConstrainedPoint implements Comparable<MLMotionConstrainedPoint> {
         return Math.abs(a - b) > 0.000001f;
     }
 
-    /**
+   /**
      * Given the start and end points define Keys that need to be built
      *
      * @param points
@@ -333,7 +348,7 @@ class MLMotionConstrainedPoint implements Comparable<MLMotionConstrainedPoint> {
         applyParameters(view);
     }
 
-    /**
+   /**
      * @param rect     assumes pre rotated
      * @param view
      * @param rotation mode Surface.ROTATION_0,Surface.ROTATION_90...
@@ -354,7 +369,7 @@ class MLMotionConstrainedPoint implements Comparable<MLMotionConstrainedPoint> {
         }
     }
 
-    /**
+   /**
      * Sets the state of the position given a rect, constraintset, rotation and viewid
      * @param cw
      * @param constraintSet

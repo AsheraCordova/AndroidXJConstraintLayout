@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -103,7 +118,7 @@ public class ViewTransitionController {
         return false;
     }
 
-    /**
+   /**
      * Support call from MotionLayout.viewTransition
      *
      * @param id    the id of a ViewTransition
@@ -132,7 +147,7 @@ public class ViewTransitionController {
         }
     }
 
-    /**
+   /**
      * this gets Touch events on the MotionLayout and can fire transitions on down or up
      *
      * @param event
@@ -203,7 +218,7 @@ public class ViewTransitionController {
         removeList.add(animation);
     }
 
-    /**
+   /**
      * Called by motionLayout during draw to allow ViewTransitions to asynchronously animate
      */
     void animate() {

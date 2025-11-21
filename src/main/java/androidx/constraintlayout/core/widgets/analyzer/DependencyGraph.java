@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2019 The Android Open Source Project
  *
@@ -72,7 +87,7 @@ public class DependencyGraph {
         return (int) wrapSize;
     }
 
-    /**
+   /**
      * Find and mark terminal widgets (trailing widgets) -- they are the only
      * ones we need to care for wrap_content checks
      * @param horizontalBehavior
@@ -100,7 +115,7 @@ public class DependencyGraph {
         }
     }
 
-    /**
+   /**
      * Try to measure the layout by solving the graph of constraints directly
      *
      * @param optimizeWrap use the wrap_content optimizer
@@ -361,7 +376,7 @@ public class DependencyGraph {
         return allResolved;
     }
 
-    /**
+   /**
      * Convenience function to fill in the measure spec
      *
      * @param widget the widget to measure
@@ -609,14 +624,14 @@ public class DependencyGraph {
         }
     }
 
-    /**
+   /**
      * Invalidate the graph of constraints
      */
     public void invalidateGraph() {
         mNeedBuildGraph = true;
     }
 
-    /**
+   /**
      * Mark the widgets as needing to be remeasured
      */
     public void invalidateMeasures() {

@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -85,7 +100,7 @@ public class ConstraintAnchor {
 
     public boolean hasFinalValue() { return mHasFinalValue; }
 
-    /**
+   /**
      * Define the type of anchor
      */
     public enum Type { NONE, LEFT, TOP, RIGHT, BOTTOM, BASELINE, CENTER, CENTER_X, CENTER_Y }
@@ -123,7 +138,7 @@ public class ConstraintAnchor {
         mGoneMargin = source.mGoneMargin;
     }
 
-    /**
+   /**
      * Constructor
      * @param owner the widget owner of this anchor.
      * @param type the anchor type.
@@ -133,13 +148,13 @@ public class ConstraintAnchor {
         mType = type;
     }
 
-    /**
+   /**
      * Return the solver variable for this anchor
      * @return
      */
     public SolverVariable getSolverVariable() { return mSolverVariable; }
 
-    /**
+   /**
      * Reset the solver variable
      */
     public void resetSolverVariable(Cache cache) {
@@ -150,19 +165,19 @@ public class ConstraintAnchor {
         }
     }
 
-    /**
+   /**
      * Return the anchor's owner
      * @return the Widget owning the anchor
      */
     public ConstraintWidget getOwner() { return mOwner; }
 
-    /**
+   /**
      * Return the type of the anchor
      * @return type of the anchor.
      */
     public Type getType() { return mType; }
 
-    /**
+   /**
      * Return the connection's margin from this anchor to its target.
      * @return the margin value. 0 if not connected.
      */
@@ -177,13 +192,13 @@ public class ConstraintAnchor {
         return mMargin;
     }
 
-    /**
+   /**
      * Return the connection's target (null if not connected)
      * @return the ConstraintAnchor target
      */
     public ConstraintAnchor getTarget() { return mTarget; }
 
-    /**
+   /**
      * Resets the anchor's connection.
      */
     public void reset() {
@@ -201,7 +216,7 @@ public class ConstraintAnchor {
         mFinalValue = 0;
     }
 
-    /**
+   /**
      * Connects this anchor to another one.
      *
      * @param toAnchor
@@ -232,7 +247,7 @@ public class ConstraintAnchor {
     }
 
 
-    /**
+   /**
      * Connects this anchor to another one.
      * @param toAnchor
      * @param margin
@@ -242,7 +257,7 @@ public class ConstraintAnchor {
         return connect(toAnchor, margin, UNSET_GONE_MARGIN, false);
     }
 
-    /**
+   /**
      * Returns the connection status of this anchor
      * @return true if the anchor is connected to another one.
      */
@@ -250,7 +265,7 @@ public class ConstraintAnchor {
         return mTarget != null;
     }
 
-    /**
+   /**
      * Checks if the connection to a given anchor is valid.
      * @param anchor the anchor we want to connect to
      * @return true if it's a compatible anchor
@@ -303,7 +318,7 @@ public class ConstraintAnchor {
         throw new AssertionError(mType.name());
     }
 
-    /**
+   /**
      * Return true if this anchor is a side anchor
      *
      * @return true if side anchor
@@ -325,7 +340,7 @@ public class ConstraintAnchor {
         throw new AssertionError(mType.name());
     }
 
-    /**
+   /**
      * Return true if the connection to the given anchor is in the
      * same dimension (horizontal or vertical)
      *
@@ -358,7 +373,7 @@ public class ConstraintAnchor {
         throw new AssertionError(mType.name());
     }
 
-    /**
+   /**
      * Set the margin of the connection (if there's one)
      * @param margin the new margin of the connection
      */
@@ -368,7 +383,7 @@ public class ConstraintAnchor {
         }
     }
 
-    /**
+   /**
      * Set the gone margin of the connection (if there's one)
      * @param margin the new margin of the connection
      */
@@ -378,7 +393,7 @@ public class ConstraintAnchor {
         }
     }
 
-    /**
+   /**
      * Utility function returning true if this anchor is a vertical one.
      *
      * @return true if vertical anchor, false otherwise
@@ -400,7 +415,7 @@ public class ConstraintAnchor {
         throw new AssertionError(mType.name());
     }
 
-    /**
+   /**
      * Return a string representation of this anchor
      *
      * @return string representation of the anchor
@@ -410,7 +425,7 @@ public class ConstraintAnchor {
         return mOwner.getDebugName() + ":" + mType.toString();
     }
 
-    /**
+   /**
      *
      *  Return true if we can connect this anchor to this target.
      * We recursively follow connections in order to detect eventual cycles; if we
@@ -430,7 +445,7 @@ public class ConstraintAnchor {
         return isConnectionAllowed(target);
     }
 
-    /**
+   /**
      * Return true if we can connect this anchor to this target.
      * We recursively follow connections in order to detect eventual cycles; if we
      * do we disallow the connection.
@@ -454,7 +469,7 @@ public class ConstraintAnchor {
         return false;
     }
 
-    /**
+   /**
      * Recursive with check for loop
      *
      * @param target
@@ -482,7 +497,7 @@ public class ConstraintAnchor {
         return false;
     }
 
-    /**
+   /**
      * Returns the opposite anchor to this one
      * @return opposite anchor
      */

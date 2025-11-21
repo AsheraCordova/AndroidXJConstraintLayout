@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2016 The Android Open Source Project
  *
@@ -93,7 +108,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
     //  current = mArrayNextIndices[current]; counter++;
     // }
 
-    /**
+   /**
      * Constructor
      * @param arrayRow the row owning us
      * @param cache instances cache
@@ -108,7 +123,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    /**
+   /**
      * Insert a variable with a given value in the linked list
      *
      * @param variable the variable to add in the list
@@ -213,7 +228,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    /**
+   /**
      * Add value to an existing variable
      *
      * The code is broadly identical to the put() method, only differing
@@ -339,7 +354,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    /**
+   /**
      * Update the current list with a new definition
      * @param definition the row containing the definition
      * @param removeFromDefinition
@@ -358,7 +373,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return value;
     }
 
-    /**
+   /**
      * Remove a variable from the list
      *
      * @param variable the variable we want to remove
@@ -402,7 +417,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return 0;
     }
 
-    /**
+   /**
      * Clear the list of variables
      */
     public final void clear() {
@@ -422,7 +437,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         currentSize = 0;
     }
 
-    /**
+   /**
      * Returns true if the variable is contained in the list
      *
      * @param variable the variable we are looking for
@@ -461,7 +476,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
 
 
 
-    /**
+   /**
      * Returns true if at least one of the variable is positive
      *
      * @return true if at least one of the variable is positive
@@ -478,7 +493,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return false;
     }
 
-    /**
+   /**
      * Invert the values of all the variables in the list
      */
     public void invert() {
@@ -490,7 +505,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    /**
+   /**
      * Divide the values of all the variables in the list
      * by the given amount
      *
@@ -520,7 +535,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return mArrayNextIndices[index];
     }
 
-    /**
+   /**
      * TODO: check if still needed
      * Return a pivot candidate
      * @return return a variable we can pivot on
@@ -548,7 +563,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return candidate;
     }
 
-    /**
+   /**
      * Return a variable from its position in the linked list
      *
      * @param index the index of the variable we want to return
@@ -566,7 +581,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return null;
     }
 
-    /**
+   /**
      * Return the value of a variable from its position in the linked list
      *
      * @param index the index of the variable we want to look up
@@ -584,7 +599,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         return 0;
     }
 
-    /**
+   /**
      * Return the value of a variable, 0 if not found
      * @param v the variable we are looking up
      * @return the value of the found variable, or 0 if not found
@@ -623,7 +638,7 @@ public class ArrayLinkedVariables implements ArrayRow.ArrayRowVariables {
         System.out.println(" }");
     }
 
-    /**
+   /**
      * Returns a string representation of the list
      *
      * @return a string containing a representation of the list

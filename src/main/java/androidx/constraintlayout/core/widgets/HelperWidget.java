@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 package androidx.constraintlayout.core.widgets;
 
 import androidx.constraintlayout.core.widgets.analyzer.Grouping;
@@ -19,7 +34,7 @@ public class HelperWidget extends ConstraintWidget implements Helper {
         // nothing here
     }
 
-    /**
+   /**
      * Add a widget to the helper
      *
      * @param widget a widget
@@ -46,7 +61,7 @@ public class HelperWidget extends ConstraintWidget implements Helper {
         }
     }
 
-    /**
+   /**
      * Reset the widgets list contained by this helper
      */
     public void removeAllIds() {

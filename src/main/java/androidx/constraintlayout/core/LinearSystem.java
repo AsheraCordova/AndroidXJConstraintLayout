@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -41,23 +56,23 @@ public class LinearSystem {
     public static boolean SKIP_COLUMNS = true;
     public static boolean OPTIMIZED_ENGINE = false;
 
-    /*
+   /*
      * Default size for the object pools
      */
     private static int POOL_SIZE = 1000;
     public boolean hasSimpleDefinition = false;
 
-    /*
+   /*
      * Variable counter
      */
     int mVariablesID = 0;
 
-    /*
+   /*
      * Store a map between name->SolverVariable and SolverVariable->Float for the resolution.
      */
     private HashMap<String, SolverVariable> mVariables = null;
 
-    /*
+   /*
      * The goal that is used when minimizing the system.
      */
     private Row mGoal;
@@ -124,11 +139,11 @@ public class LinearSystem {
         void updateFromFinalVariable(LinearSystem system, SolverVariable variable, boolean removeFromDefinition);
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
     // Memory management
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
 
-    /**
+   /**
      * Reallocate memory to accommodate increased amount of variables
      */
     private void increaseTableSize() {
@@ -150,7 +165,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Release ArrayRows back to their pool
      */
     private void releaseRows() {
@@ -173,7 +188,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Reset the LinearSystem object so that it can be reused.
      */
     public void reset() {
@@ -212,9 +227,9 @@ public class LinearSystem {
         }
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
     // Creation of rows / variables / errors
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
 
     public SolverVariable createObjectVariable(Object anchor) {
         if (anchor == null) {
@@ -361,7 +376,7 @@ public class LinearSystem {
         return variable;
     }
 
-    /**
+   /**
      * Returns a SolverVariable instance of the given type
      * @param type type of the SolverVariable
      * @return instance of SolverVariable
@@ -383,11 +398,11 @@ public class LinearSystem {
         return variable;
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
     // Accessors of rows / variables / errors
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
 
-    /**
+   /**
      * Simple accessor for the current goal. Used when minimizing the system's goal.
      * @return the current goal.
      */
@@ -419,7 +434,7 @@ public class LinearSystem {
         return 0;
     }
 
-    /**
+   /**
      * Returns a SolverVariable instance given a name and a type.
      *
      * @param name name of the variable
@@ -437,11 +452,11 @@ public class LinearSystem {
         return variable;
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
     // System resolution
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
 
-    /**
+   /**
      * Minimize the current goal of the system.
      */
     public void minimize() throws Exception {
@@ -486,7 +501,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Minimize the given goal with the current system.
      * @param goal the goal to minimize.
      */
@@ -545,7 +560,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Add the equation to the system
      * @param row the equation we want to add expressed as a system row.
      */
@@ -706,7 +721,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Optimize the system given a goal to minimize. The system should be in BFS form.
      * @param goal goal to optimize.
      * @param b
@@ -829,7 +844,7 @@ public class LinearSystem {
                         displayReadableRows();
                         System.out.println("optimizing: " + goal);
                     }
-                    /*
+                   /*
                     try {
                         enforceBFS(goal);
                     } catch (Exception e) {
@@ -857,7 +872,7 @@ public class LinearSystem {
         return tries;
     }
 
-    /**
+   /**
      * Make sure that the system is in Basic Feasible Solved form (BFS).
      * @param goal the row representing the system goal
      * @return number of iterations
@@ -1039,9 +1054,9 @@ public class LinearSystem {
         }
     }
 
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
     // Display utility functions
-    /*--------------------------------------------------------------------------------------------*/
+   /*--------------------------------------------------------------------------------------------*/
 
     @SuppressWarnings("unused")
     private void displayRows() {
@@ -1113,7 +1128,7 @@ public class LinearSystem {
     @SuppressWarnings("unused")
     public int getNumVariables() { return mVariablesID; }
 
-    /**
+   /**
      * Display current system information
      */
     void displaySystemInformation() {
@@ -1143,7 +1158,7 @@ public class LinearSystem {
 
     private void displaySolverVariables() {
         String s = "Display Rows (" + mNumRows + "x" + mNumColumns + ")\n";
-        /*
+       /*
         s += ":\n\t | C | ";
         for (int i = 1; i <= mNumColumns; i++) {
             SolverVariable v = mCache.mIndexedVariables[i];
@@ -1200,7 +1215,7 @@ public class LinearSystem {
     // Equations
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Add an equation of the form a >= b + margin
      * @param a variable a
      * @param b variable b
@@ -1233,7 +1248,7 @@ public class LinearSystem {
         addConstraint(row);
     }
 
-    /**
+   /**
      * Add an equation of the form a <= b + margin
      * @param a variable a
      * @param b variable b
@@ -1266,7 +1281,7 @@ public class LinearSystem {
         addConstraint(row);
     }
 
-    /**
+   /**
      * Add an equation of the form (1 - bias) * (a - b) = bias * (c - d)
      * @param a variable a
      * @param b variable b
@@ -1325,7 +1340,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Add an equation of the form a = b + margin
      * @param a variable a
      * @param b variable b
@@ -1368,7 +1383,7 @@ public class LinearSystem {
         return row;
     }
 
-    /**
+   /**
      * Add an equation of the form a = value
      * @param a variable a
      * @param value the value we set
@@ -1412,7 +1427,7 @@ public class LinearSystem {
         }
     }
 
-    /**
+   /**
      * Create a constraint to express A = C * percent
      * @param linearSystem the system we create the row on
      * @param variableA variable a
@@ -1431,7 +1446,7 @@ public class LinearSystem {
         return row.createRowDimensionPercent(variableA, variableC, percent);
     }
 
-    /**
+   /**
      * Add the equations constraining a widget center to another widget center, positioned
      * on a circle, following an angle and radius
      *

@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -54,14 +69,14 @@ public class ConstraintWidgetContainer extends WidgetContainer {
     public DependencyGraph mDependencyGraph = new DependencyGraph(this);
     private int pass; // number of layout passes
 
-    /**
+   /**
      * Invalidate the graph of constraints
      */
     public void invalidateGraph() {
         mDependencyGraph.invalidateGraph();
     }
 
-    /**
+   /**
      * Invalidate the widgets measures
      */
     public void invalidateMeasures() {
@@ -102,7 +117,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
+   /**
      * Measure the layout
      *
      * @param optimizationLevel
@@ -169,17 +184,17 @@ public class ConstraintWidgetContainer extends WidgetContainer {
     private boolean mWidthMeasuredTooSmall = false;
     private boolean mHeightMeasuredTooSmall = false;
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Construction
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Default constructor
      */
     public ConstraintWidgetContainer() {
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param x      x position
@@ -191,7 +206,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         super(x, y, width, height);
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param width  width of the layout
@@ -206,7 +221,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         setDebugName(debugName);
     }
 
-    /**
+   /**
      * Resolves the system directly when possible
      *
      * @param value optimization level
@@ -216,7 +231,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mSystem.USE_DEPENDENCY_ORDERING = optimizeFor(Optimizer.OPTIMIZATION_DEPENDENCY_ORDERING);
     }
 
-    /**
+   /**
      * Returns the current optimization level
      *
      * @return
@@ -225,7 +240,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return mOptimizationLevel;
     }
 
-    /**
+   /**
      * Returns true if the given feature should be optimized
      *
      * @param feature
@@ -235,7 +250,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return (mOptimizationLevel & feature) == feature;
     }
 
-    /**
+   /**
      * Specify the xml type for the container
      *
      * @return
@@ -256,14 +271,14 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         super.reset();
     }
 
-    /**
+   /**
      * Return true if the width given is too small for the content laid out
      */
     public boolean isWidthMeasuredTooSmall() {
         return mWidthMeasuredTooSmall;
     }
 
-    /**
+   /**
      * Return true if the height given is too small for the content laid out
      */
     public boolean isHeightMeasuredTooSmall() {
@@ -319,7 +334,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
 
     HashSet<ConstraintWidget> widgetsToAdd = new HashSet<>();
 
-    /**
+   /**
      * Add this widget to the solver
      *
      * @param system the solver we want to add the widget to
@@ -447,7 +462,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return true;
     }
 
-    /**
+   /**
      * Update the frame of the layout and its children from the solver
      *
      * @param system the solver we get the values from.
@@ -478,7 +493,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         }
     }
 
-    /**
+   /**
      * Set the padding on this container. It will apply to the position of the children.
      *
      * @param left   left padding
@@ -493,7 +508,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mPaddingBottom = bottom;
     }
 
-    /**
+   /**
      * Set the rtl status. This has implications for Chains.
      *
      * @param isRtl true if we are in RTL.
@@ -502,7 +517,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mIsRtl = isRtl;
     }
 
-    /**
+   /**
      * Returns the rtl status.
      *
      * @return true if in RTL, false otherwise.
@@ -511,9 +526,9 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return mIsRtl;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Overloaded methods from ConstraintWidget
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
     public BasicMeasure.Measure mMeasure = new BasicMeasure.Measure();
 
@@ -645,7 +660,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
 
     static int myCounter = 0;
 
-    /**
+   /**
      * Layout the tree of widgets
      */
     @Override
@@ -982,7 +997,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         resetSolverVariables(mSystem.getCache());
     }
 
-    /**
+   /**
      * Indicates if the container knows how to layout its content on its own
      *
      * @return true if the container does the layout, false otherwise
@@ -991,11 +1006,11 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return false;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Guidelines
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Accessor to the vertical guidelines contained in the table.
      *
      * @return array of guidelines
@@ -1014,7 +1029,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return guidelines;
     }
 
-    /**
+   /**
      * Accessor to the horizontal guidelines contained in the table.
      *
      * @return array of guidelines
@@ -1037,11 +1052,11 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return mSystem;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Chains
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Reset the chains array. Need to be called before layout.
      */
     private void resetChains() {
@@ -1049,7 +1064,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mVerticalChainsSize = 0;
     }
 
-    /**
+   /**
      * Add the chain which constraintWidget is part of. Called by ConstraintWidget::addToSolver()
      *
      * @param constraintWidget
@@ -1064,7 +1079,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         }
     }
 
-    /**
+   /**
      * Add a widget to the list of horizontal chains. The widget is the left-most widget
      * of the chain which doesn't have a left dual connection.
      *
@@ -1079,7 +1094,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mHorizontalChainsSize++;
     }
 
-    /**
+   /**
      * Add a widget to the list of vertical chains. The widget is the top-most widget
      * of the chain which doesn't have a top dual connection.
      *
@@ -1094,7 +1109,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         mVerticalChainsSize++;
     }
 
-    /**
+   /**
      * Keep track of the # of passes
      * @param pass
      */

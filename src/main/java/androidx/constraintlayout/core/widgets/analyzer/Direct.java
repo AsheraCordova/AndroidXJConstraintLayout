@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -49,7 +64,7 @@ public class Direct {
     private static int hcount = 0;
     private static int vcount = 0;
 
-    /**
+   /**
      * Walk the dependency graph and solves it.
      *
      * @param layout the container we want to optimize
@@ -267,7 +282,7 @@ public class Direct {
         }
     }
 
-    /**
+   /**
      * Ask the barrier if it's resolved, and if so do a solving pass
      * @param level
      * @param barrier
@@ -284,7 +299,7 @@ public class Direct {
         }
     }
 
-    /**
+   /**
      * Small utility function to indent logs depending on the level
      * @param level
      * @return a formatted string for the indentation
@@ -298,7 +313,7 @@ public class Direct {
         return builder.toString();
     }
 
-    /**
+   /**
      * Does an horizontal solving pass for the given widget. This will walk through the widget's
      * horizontal dependencies and if they can be resolved directly, do so.
      * @param level
@@ -428,7 +443,7 @@ public class Direct {
         layout.markHorizontalSolvingPassDone();
     }
 
-    /**
+   /**
      * Does an vertical solving pass for the given widget. This will walk through the widget's
      * vertical dependencies and if they can be resolved directly, do so.
      *
@@ -585,7 +600,7 @@ public class Direct {
         layout.markVerticalSolvingPassDone();
     }
 
-    /**
+   /**
      * Solve horizontal centering constraints
      *
      * @param level
@@ -627,7 +642,7 @@ public class Direct {
         horizontalSolvingPass(level + 1, widget, measurer, isRtl);
     }
 
-    /**
+   /**
      * Solve vertical centering constraints
      *
      * @param level
@@ -668,7 +683,7 @@ public class Direct {
         verticalSolvingPass(level + 1, widget, measurer);
     }
 
-    /**
+   /**
      * Solve horizontal match constraints
      *
      * @param level
@@ -710,7 +725,7 @@ public class Direct {
         }
     }
 
-    /**
+   /**
      * Solve vertical match constraints
      *
      * @param level
@@ -751,7 +766,7 @@ public class Direct {
         }
     }
 
-    /**
+   /**
      * Returns true if the dimensions of the given widget are computable directly
      *
      *
@@ -799,7 +814,7 @@ public class Direct {
         return isHorizontalFixed && isVerticalFixed;
     }
 
-    /**
+   /**
      * Try to directly resolve the chain
      *
      * @param container

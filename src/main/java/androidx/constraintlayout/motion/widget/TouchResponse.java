@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -177,7 +192,7 @@ class TouchResponse {
         mDragStarted = false;
     }
 
-    /**
+   /**
      * @param event
      * @param velocityTracker
      * @param currentState
@@ -331,7 +346,7 @@ class TouchResponse {
 
     }
 
-    /**
+   /**
      * Process touch events
      *
      * @param event        The event coming from the touch
@@ -510,7 +525,7 @@ class TouchResponse {
         mLastTouchY = lastTouchY;
     }
 
-    /**
+   /**
      * Calculate if a drag in this direction results in an increase or decrease in progress.
      *
      * @param dx drag direction in x
@@ -617,7 +632,7 @@ class TouchResponse {
         }
     }
 
-    /**
+   /**
      * set the id of the anchor
      *
      * @param id
@@ -626,7 +641,7 @@ class TouchResponse {
         mTouchAnchorId = id;
     }
 
-    /**
+   /**
      * Get the view being used as anchor
      *
      * @return
@@ -635,7 +650,7 @@ class TouchResponse {
         return mTouchAnchorId;
     }
 
-    /**
+   /**
      * Set the location in the view to be the touch anchor
      *
      * @param x location in x 0 = left, 1 = right
@@ -646,7 +661,7 @@ class TouchResponse {
         mTouchAnchorY = y;
     }
 
-    /**
+   /**
      * Sets the maximum velocity allowed on touch up.
      * Velocity is the rate of change in "progress" per second.
      *
@@ -656,7 +671,7 @@ class TouchResponse {
         mMaxVelocity = velocity;
     }
 
-    /**
+   /**
      * set the maximum Acceleration allowed for a motion.
      * Acceleration is the rate of change velocity per second.
      *
@@ -670,7 +685,7 @@ class TouchResponse {
         return mMaxAcceleration;
     }
 
-    /**
+   /**
      * Gets the maximum velocity allowed on touch up.
      * Velocity is the rate of change in "progress" per second.
      *
@@ -684,7 +699,7 @@ class TouchResponse {
         return mMoveWhenScrollAtTop;
     }
 
-    /**
+   /**
      * Get how the drag progress will return to the start or end state on touch up.
      * Can be ether COMPLETE_MODE_CONTINUOUS_VELOCITY (default) or COMPLETE_MODE_SPRING
      * @return
@@ -692,7 +707,7 @@ class TouchResponse {
     public int getAutoCompleteMode() {
         return mAutoCompleteMode;
     }
-    /**
+   /**
      * set how the drag progress will return to the start or end state on touch up.
      *
      *
@@ -702,7 +717,7 @@ class TouchResponse {
         mAutoCompleteMode = autoCompleteMode;
     }
 
-    /**
+   /**
      * This calculates the bounds of the mTouchRegionId view.
      * This reuses rect for efficiency as this class will be called many times.
      *
@@ -726,7 +741,7 @@ class TouchResponse {
         return mTouchRegionId;
     }
 
-    /**
+   /**
      * This calculates the bounds of the mTouchRegionId view.
      * This reuses rect for efficiency as this class will be called many times.
      *
@@ -758,7 +773,7 @@ class TouchResponse {
         return (Float.isNaN(mTouchDirectionX)) ? "rotation" : (mTouchDirectionX + " , " + mTouchDirectionY);
     }
 
-    /**
+   /**
      * flags to control
      *
      * @return
@@ -771,7 +786,7 @@ class TouchResponse {
         mOnTouchUp = touchUpMode;
     }
 
-    /**
+   /**
      * the stiffness of the spring if using spring
      *  K in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      * @return NaN if not set
@@ -780,7 +795,7 @@ class TouchResponse {
         return mSpringStiffness;
     }
 
-    /**
+   /**
      * the Mass of the spring if using spring
      *  m in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      * @return default is 1
@@ -789,7 +804,7 @@ class TouchResponse {
         return mSpringMass;
     }
 
-    /**
+   /**
      * the damping of the spring if using spring
      * c in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      * @return NaN if not set
@@ -798,7 +813,7 @@ class TouchResponse {
         return mSpringDamping;
     }
 
-    /**
+   /**
      * The threshold below
      * @return NaN if not set
      */
@@ -806,7 +821,7 @@ class TouchResponse {
         return mSpringStopThreshold;
     }
 
-    /**
+   /**
      * The spring's behaviour when it hits 0 or 1. It can be made ot overshoot or bounce
      * overshoot = 0
      * bounceStart = 1

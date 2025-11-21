@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2021 The Android Open Source Project
  *
@@ -53,7 +68,7 @@ public class MotionWidget implements TypedValues {
     public static final int GONE_UNSET = Integer.MIN_VALUE;
     public static final int MATCH_CONSTRAINT_WRAP = ConstraintWidget.MATCH_CONSTRAINT_WRAP;
 
-    /**
+   /**
      * @hide
      */
     public static class Motion {
@@ -212,7 +227,7 @@ public class MotionWidget implements TypedValues {
         return true;
     }
 
-    /**
+   /**
      * Sets the attributes
      *
      * @param id
@@ -264,7 +279,7 @@ public class MotionWidget implements TypedValues {
         }
         return true;
     }
-    /**
+   /**
      * Sets the attributes
      *
      * @param id

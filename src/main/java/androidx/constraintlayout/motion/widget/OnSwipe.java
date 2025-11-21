@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2021 The Android Open Source Project
  *
@@ -76,7 +91,7 @@ public class OnSwipe {
     public static final int ON_UP_NEVER_TO_START = 6;
     public static final int ON_UP_NEVER_TO_END = 7;
 
-    /**
+   /**
      * The id of the view who's movement is matched to your drag
      * If not specified it will map to a linear movement across the width of the motionLayout
      *
@@ -92,7 +107,7 @@ public class OnSwipe {
         return mTouchAnchorId;
     }
 
-    /**
+   /**
      * This side of the view that matches the drag movement.
      * Only meaning full if the object changes size during the movement.
      * (rotation is not considered)
@@ -109,7 +124,7 @@ public class OnSwipe {
         return mTouchAnchorSide;
     }
 
-    /**
+   /**
      * The direction of the drag.
      *
      * @param dragDirection
@@ -124,7 +139,7 @@ public class OnSwipe {
         return mDragDirection;
     }
 
-    /**
+   /**
      * The maximum velocity (Change in progress per second) animation can achive
      *
      * @param maxVelocity
@@ -139,7 +154,7 @@ public class OnSwipe {
         return mMaxVelocity;
     }
 
-    /**
+   /**
      * The maximum acceleration and deceleration of the animation
      * (Change in Change in progress per second)
      * Faster makes the object seem lighter and quicker
@@ -156,7 +171,7 @@ public class OnSwipe {
         return mMaxAcceleration;
     }
 
-    /**
+   /**
      * When collaborating with a NestedScrollView do you progress form 0-1 only
      * when the scroll view is at the top.
      *
@@ -172,7 +187,7 @@ public class OnSwipe {
         return mMoveWhenScrollAtTop;
     }
 
-    /**
+   /**
      * Normally 1 this can be tweaked to make the acceleration faster
      *
      * @param dragScale
@@ -187,7 +202,7 @@ public class OnSwipe {
         return mDragScale;
     }
 
-    /**
+   /**
      * This sets the threshold before the animation is kicked off.
      * It is important when have multi state animations the have some play before the
      * System decides which animation to jump on.
@@ -204,7 +219,7 @@ public class OnSwipe {
         return mDragThreshold;
     }
 
-    /**
+   /**
      * @param side
      * @return
      */
@@ -217,7 +232,7 @@ public class OnSwipe {
         return mTouchRegionId;
     }
 
-    /**
+   /**
      * Configures what happens when the user releases on mouse up.
      * One of: ON_UP_AUTOCOMPLETE, ON_UP_AUTOCOMPLETE_TO_START, ON_UP_AUTOCOMPLETE_TO_END,
      * ON_UP_STOP, ON_UP_DECELERATE, ON_UP_DECELERATE_AND_COMPLETE
@@ -234,7 +249,7 @@ public class OnSwipe {
         return mOnTouchUp;
     }
 
-    /**
+   /**
      * Various flag to control behaviours of nested scroll
      * FLAG_DISABLE_POST_SCROLL = 1;
      * FLAG_DISABLE_SCROLL = 2;
@@ -251,7 +266,7 @@ public class OnSwipe {
         return mFlags;
     }
 
-    /**
+   /**
      * Only allow touch actions to be initiated within this region
      *
      * @param id
@@ -266,7 +281,7 @@ public class OnSwipe {
         return mLimitBoundsTo;
     }
 
-    /**
+   /**
      * The view to center the rotation about
      *
      * @param rotationCenterId
@@ -286,7 +301,7 @@ public class OnSwipe {
         return mSpringDamping;
     }
 
-    /**
+   /**
      * Set the damping of the spring if using spring.
      * c in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      *
@@ -298,7 +313,7 @@ public class OnSwipe {
         return this;
     }
 
-    /**
+   /**
      * Get the mass of the spring.
      * the m in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      *
@@ -308,7 +323,7 @@ public class OnSwipe {
         return mSpringMass;
     }
 
-    /**
+   /**
      * Set the Mass of the spring if using spring.
      * m in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
      *
@@ -320,7 +335,7 @@ public class OnSwipe {
         return this;
     }
 
-    /**
+   /**
      * get the stiffness of the spring
      *
      * @return NaN if not set
@@ -329,7 +344,7 @@ public class OnSwipe {
         return mSpringStiffness;
     }
 
-    /**
+   /**
      * set the stiffness of the spring if using spring.
      * If this is set the swipe will use a spring return system.
      * If set to NaN it will revert to the norm system.
@@ -343,7 +358,7 @@ public class OnSwipe {
         return this;
     }
 
-    /**
+   /**
      * The threshold for spring motion to stop.
      *
      * @return
@@ -352,7 +367,7 @@ public class OnSwipe {
         return mSpringStopThreshold;
     }
 
-    /**
+   /**
      * set the threshold for spring motion to stop.
      * This is in change in progress / second
      * If the spring will never go above that threshold again it will stop.
@@ -365,7 +380,7 @@ public class OnSwipe {
         return this;
     }
 
-    /**
+   /**
      * The behaviour at the boundaries 0 and 1
      *
      * @return
@@ -374,7 +389,7 @@ public class OnSwipe {
         return mSpringBoundary;
     }
 
-    /**
+   /**
      * The behaviour at the boundaries 0 and 1.
      * SPRING_BOUNDARY_OVERSHOOT = 0;
      * SPRING_BOUNDARY_BOUNCE_START = 1;
@@ -394,7 +409,7 @@ public class OnSwipe {
     }
 
 
-    /**
+   /**
      * sets the behaviour at the boundaries 0 and 1
      *     COMPLETE_MODE_CONTINUOUS_VELOCITY = 0;
      *      COMPLETE_MODE_SPRING = 1;

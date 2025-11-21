@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -41,19 +56,19 @@ package androidx.constraintlayout.core;
 final class CLPools {
     private static final boolean DEBUG = false;
 
-    /**
+   /**
      * Interface for managing a pool of objects.
      *
      * @param <T> The pooled type.
      */
     interface Pool<T> {
 
-        /**
+       /**
          * @return An instance from the pool if such, null otherwise.
          */
         T acquire();
 
-        /**
+       /**
          * Release an instance to the pool.
          *
          * @param instance The instance to release.
@@ -63,7 +78,7 @@ final class CLPools {
          */
         boolean release(T instance);
 
-        /**
+       /**
          * Try releasing all instances at the same time
          *
          * @param variables the variables to release
@@ -73,10 +88,10 @@ final class CLPools {
     }
 
     private CLPools() {
-        /* do nothing - hiding constructor */
+       /* do nothing - hiding constructor */
     }
 
-    /**
+   /**
      * Simple (non-synchronized) pool of objects.
      *
      * @param <T> The pooled type.
@@ -86,7 +101,7 @@ final class CLPools {
 
         private int mPoolSize;
 
-        /**
+       /**
          * Creates a new instance.
          *
          * @param maxPoolSize The max pool size.

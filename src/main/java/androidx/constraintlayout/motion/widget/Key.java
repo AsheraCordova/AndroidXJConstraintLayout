@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -74,7 +89,7 @@ public abstract class Key {
         return constraintTag.matches(mTargetString);
     }
 
-    /**
+   /**
      * Defines method to add a a view to splines derived form this key frame.
      * The values are written to the spline
      *
@@ -83,7 +98,7 @@ public abstract class Key {
      */
     public abstract void addValues(HashMap<String, ViewSpline> splines);
 
-    /**
+   /**
      * Set the value associated with this tag
      *
      * @param tag
@@ -92,7 +107,7 @@ public abstract class Key {
      */
     public abstract void setValue(String tag, Object value);
 
-    /**
+   /**
      * Return the float given a value. If the value is a "Float" object it is casted
      *
      * @param value
@@ -103,7 +118,7 @@ public abstract class Key {
         return (value instanceof Float) ? (Float) value : Float.parseFloat(value.toString());
     }
 
-    /**
+   /**
      * Return the int version of an object if the value is an Integer object it is casted.
      *
      * @param value
@@ -114,7 +129,7 @@ public abstract class Key {
         return (value instanceof Integer) ? (Integer) value : Integer.parseInt(value.toString());
     }
 
-    /**
+   /**
      * Return the boolean version this object if the object is a Boolean it is casted.
      *
      * @param value
@@ -125,7 +140,7 @@ public abstract class Key {
         return (value instanceof Boolean) ? (Boolean) value : Boolean.parseBoolean(value.toString());
     }
 
-    /**
+   /**
      * Key frame can specify the type of interpolation it wants on various attributes
      * For each string it set it to -1, CurveFit.LINEAR or  CurveFit.SPLINE
      *
@@ -150,7 +165,7 @@ public abstract class Key {
         return this;
     }
 
-    /**
+   /**
      * sets the frame position
      *
      * @param pos
@@ -159,7 +174,7 @@ public abstract class Key {
         mFramePosition = pos;
     }
 
-    /**
+   /**
      * Gets the current frame position
      *
      * @return

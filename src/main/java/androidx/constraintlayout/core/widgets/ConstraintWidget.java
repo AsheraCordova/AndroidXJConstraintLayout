@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -391,7 +406,7 @@ public class ConstraintWidget {
         return mWrapBehaviorInParent;
     }
 
-    /**
+   /**
      * Keep a cache of the last measure cache as we can bypass remeasures during the onMeasure...
      * the View's measure cache will only be reset in onLayout, so too late for us.
      */
@@ -405,7 +420,7 @@ public class ConstraintWidget {
         setMeasureRequested(false);
     }
 
-    /**
+   /**
      * Define how the widget will resize
      */
     public enum DimensionBehaviour {
@@ -702,7 +717,7 @@ public class ConstraintWidget {
     }
 
     public boolean oppositeDimensionsTied() {
-        return /* isInHorizontalChain() || isInVerticalChain() || */
+        return/* isInHorizontalChain() || isInVerticalChain() || */
                 (mListDimensionBehaviors[HORIZONTAL] == MATCH_CONSTRAINT
                 && mListDimensionBehaviors[VERTICAL] == MATCH_CONSTRAINT);
     }
@@ -711,11 +726,11 @@ public class ConstraintWidget {
         return mWidthOverride != -1 || mHeightOverride != -1;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Creation
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Default constructor
      */
     public ConstraintWidget() {
@@ -727,7 +742,7 @@ public class ConstraintWidget {
         setDebugName(debugName);
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param x      x position
@@ -748,7 +763,7 @@ public class ConstraintWidget {
         setDebugName(debugName);
     }
 
-    /**
+   /**
      * Constructor
      *
      * @param width  width of the layout
@@ -772,7 +787,7 @@ public class ConstraintWidget {
         setDebugName(debugName);
     }
 
-    /**
+   /**
      * Reset the solver variables of the anchors
      */
     public void resetSolverVariables(Cache cache) {
@@ -786,7 +801,7 @@ public class ConstraintWidget {
         mCenterY.resetSolverVariable(cache);
     }
 
-    /**
+   /**
      * Add all the anchors to the mAnchors array
      */
     private void addAnchors() {
@@ -800,7 +815,7 @@ public class ConstraintWidget {
         mAnchors.add(mBaseline);
     }
 
-    /**
+   /**
      * Returns true if the widget is the root widget
      *
      * @return true if root widget, false otherwise
@@ -809,7 +824,7 @@ public class ConstraintWidget {
         return mParent == null;
     }
 
-    /**
+   /**
      * Returns the parent of this widget if there is one
      *
      * @return parent
@@ -818,7 +833,7 @@ public class ConstraintWidget {
         return mParent;
     }
 
-    /**
+   /**
      * Set the parent of this widget
      *
      * @param widget parent
@@ -827,7 +842,7 @@ public class ConstraintWidget {
         mParent = widget;
     }
 
-    /**
+   /**
      * Keep track of wrap_content for width
      *
      * @param widthWrapContent
@@ -836,7 +851,7 @@ public class ConstraintWidget {
         this.mIsWidthWrapContent = widthWrapContent;
     }
 
-    /**
+   /**
      * Returns true if width is set to wrap_content
      *
      * @return
@@ -845,7 +860,7 @@ public class ConstraintWidget {
         return mIsWidthWrapContent;
     }
 
-    /**
+   /**
      * Keep track of wrap_content for height
      *
      * @param heightWrapContent
@@ -854,7 +869,7 @@ public class ConstraintWidget {
         this.mIsHeightWrapContent = heightWrapContent;
     }
 
-    /**
+   /**
      * Returns true if height is set to wrap_content
      *
      * @return
@@ -863,7 +878,7 @@ public class ConstraintWidget {
         return mIsHeightWrapContent;
     }
 
-    /**
+   /**
      * Set a circular constraint
      *
      * @param target the target widget we will use as the center of the circle
@@ -876,7 +891,7 @@ public class ConstraintWidget {
         mCircleConstraintAngle = angle;
     }
 
-    /**
+   /**
      * Returns the type string if set
      *
      * @return type (null if not set)
@@ -885,7 +900,7 @@ public class ConstraintWidget {
         return mType;
     }
 
-    /**
+   /**
      * Set the type of the widget (as a String)
      *
      * @param type type of the widget
@@ -894,7 +909,7 @@ public class ConstraintWidget {
         mType = type;
     }
 
-    /**
+   /**
      * Set the visibility for this widget
      *
      * @param visibility either VISIBLE, INVISIBLE, or GONE
@@ -903,7 +918,7 @@ public class ConstraintWidget {
         mVisibility = visibility;
     }
 
-    /**
+   /**
      * Returns the current visibility value for this widget
      *
      * @return the visibility (VISIBLE, INVISIBLE, or GONE)
@@ -912,7 +927,7 @@ public class ConstraintWidget {
         return mVisibility;
     }
 
-    /**
+   /**
      * Returns the name of this widget (used for debug purposes)
      *
      * @return the debug name
@@ -921,14 +936,14 @@ public class ConstraintWidget {
         return mDebugName;
     }
 
-    /**
+   /**
      * Set the debug name of this widget
      */
     public void setDebugName(String name) {
         mDebugName = name;
     }
 
-    /**
+   /**
      * Utility debug function. Sets the names of the anchors in the solver given
      * a widget's name. The given name is used as a prefix, resulting in anchors' names
      * of the form:
@@ -958,7 +973,7 @@ public class ConstraintWidget {
         baseline.setName(name + ".baseline");
     }
 
-    /**
+   /**
      * Create all the system variables for this widget
      *
      * @param system
@@ -974,7 +989,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Returns a string representation of the ConstraintWidget
      *
      * @return string representation of the widget
@@ -986,17 +1001,17 @@ public class ConstraintWidget {
                 + "(" + mX + ", " + mY + ") - (" + mWidth + " x " + mHeight + ")";
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Position
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // The widget position is expressed in two ways:
     // - relative to its direct parent container (getX(), getY())
     // - relative to the root container (getDrawX(), getDrawY())
     // Additionally, getDrawX()/getDrawY() are used when animating the
     // widget position on screen
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Return the x position of the widget, relative to its container
      *
      * @return x position
@@ -1008,7 +1023,7 @@ public class ConstraintWidget {
         return mX;
     }
 
-    /**
+   /**
      * Return the y position of the widget, relative to its container
      *
      * @return y position
@@ -1020,7 +1035,7 @@ public class ConstraintWidget {
         return mY;
     }
 
-    /**
+   /**
      * Return the width of the widget
      *
      * @return width width
@@ -1068,7 +1083,7 @@ public class ConstraintWidget {
         return h;
     }
 
-    /**
+   /**
      * Return the height of the widget
      *
      * @return height height
@@ -1080,7 +1095,7 @@ public class ConstraintWidget {
         return mHeight;
     }
 
-    /**
+   /**
      * Get a dimension of the widget in a particular orientation.
      *
      * @param orientation
@@ -1096,7 +1111,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Return the x position of the widget, relative to the root
      * (without animation)
      *
@@ -1106,7 +1121,7 @@ public class ConstraintWidget {
         return mX + mOffsetX;
     }
 
-    /**
+   /**
      * Return the y position of the widget, relative to the root
      * (without animation)
      *
@@ -1116,7 +1131,7 @@ public class ConstraintWidget {
         return mY + mOffsetY;
     }
 
-    /**
+   /**
      * Return the minimum width of the widget
      *
      * @return minimum width
@@ -1125,7 +1140,7 @@ public class ConstraintWidget {
         return mMinWidth;
     }
 
-    /**
+   /**
      * Return the minimum height of the widget
      *
      * @return minimum height
@@ -1134,7 +1149,7 @@ public class ConstraintWidget {
         return mMinHeight;
     }
 
-    /**
+   /**
      * Return the left position of the widget (similar to {@link #getX()})
      *
      * @return left position of the widget
@@ -1143,7 +1158,7 @@ public class ConstraintWidget {
         return getX();
     }
 
-    /**
+   /**
      * Return the top position of the widget (similar to {@link #getY()})
      *
      * @return top position of the widget
@@ -1152,7 +1167,7 @@ public class ConstraintWidget {
         return getY();
     }
 
-    /**
+   /**
      * Return the right position of the widget
      *
      * @return right position of the widget
@@ -1161,7 +1176,7 @@ public class ConstraintWidget {
         return getX() + mWidth;
     }
 
-    /**
+   /**
      * Return the bottom position of the widget
      *
      * @return bottom position of the widget
@@ -1170,7 +1185,7 @@ public class ConstraintWidget {
         return getY() + mHeight;
     }
 
-    /**
+   /**
      * Returns all the horizontal margin of the widget.
      */
     public int getHorizontalMargin() {
@@ -1184,7 +1199,7 @@ public class ConstraintWidget {
         return margin;
     }
 
-    /**
+   /**
      * Returns all the vertical margin of the widget
      */
     public int getVerticalMargin() {
@@ -1198,7 +1213,7 @@ public class ConstraintWidget {
         return margin;
     }
 
-    /**
+   /**
      * Return the horizontal percentage bias that is used when two opposite connections
      * exist of the same strength.
      *
@@ -1208,7 +1223,7 @@ public class ConstraintWidget {
         return mHorizontalBiasPercent;
     }
 
-    /**
+   /**
      * Return the vertical percentage bias that is used when two opposite connections
      * exist of the same strength.
      *
@@ -1218,7 +1233,7 @@ public class ConstraintWidget {
         return mVerticalBiasPercent;
     }
 
-    /**
+   /**
      * Return the percentage bias that is used when two opposite connections exist of the same
      * strength in a particular orientation.
      *
@@ -1235,7 +1250,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Return true if this widget has a baseline
      *
      * @return true if the widget has a baseline, false otherwise
@@ -1244,7 +1259,7 @@ public class ConstraintWidget {
         return hasBaseline;
     }
 
-    /**
+   /**
      * Return the baseline distance relative to the top of the widget
      *
      * @return baseline
@@ -1253,7 +1268,7 @@ public class ConstraintWidget {
         return mBaselineDistance;
     }
 
-    /**
+   /**
      * Return the companion widget. Typically, this would be the real
      * widget we represent with this instance of ConstraintWidget.
      *
@@ -1263,7 +1278,7 @@ public class ConstraintWidget {
         return mCompanionWidget;
     }
 
-    /**
+   /**
      * Return the array of anchors of this widget
      *
      * @return array of anchors
@@ -1272,7 +1287,7 @@ public class ConstraintWidget {
         return mAnchors;
     }
 
-    /**
+   /**
      * Set the x position of the widget, relative to its container
      *
      * @param x x position
@@ -1281,7 +1296,7 @@ public class ConstraintWidget {
         mX = x;
     }
 
-    /**
+   /**
      * Set the y position of the widget, relative to its container
      *
      * @param y y position
@@ -1290,7 +1305,7 @@ public class ConstraintWidget {
         mY = y;
     }
 
-    /**
+   /**
      * Set both the origin in (x, y) of the widget, relative to its container
      *
      * @param x x position
@@ -1301,7 +1316,7 @@ public class ConstraintWidget {
         mY = y;
     }
 
-    /**
+   /**
      * Set the offset of this widget relative to the root widget
      *
      * @param x horizontal offset
@@ -1312,7 +1327,7 @@ public class ConstraintWidget {
         mOffsetY = y;
     }
 
-    /**
+   /**
      * Set the margin to be used when connected to a widget with a visibility of GONE
      *
      * @param type       the anchor to set the margin on
@@ -1348,7 +1363,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the width of the widget
      *
      * @param w width
@@ -1360,7 +1375,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the height of the widget
      *
      * @param h height
@@ -1372,7 +1387,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the dimension of a widget in a particular orientation.
      *
      * @param length      Size of the dimension.
@@ -1386,7 +1401,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the horizontal style when MATCH_CONSTRAINT is set
      *
      * @param horizontalMatchStyle MATCH_CONSTRAINT_SPREAD or MATCH_CONSTRAINT_WRAP
@@ -1404,7 +1419,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the vertical style when MATCH_CONSTRAINT is set
      *
      * @param verticalMatchStyle MATCH_CONSTRAINT_SPREAD or MATCH_CONSTRAINT_WRAP
@@ -1422,7 +1437,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the ratio of the widget
      *
      * @param ratio given string of format [H|V],[float|x:y] or [float|x:y]
@@ -1484,7 +1499,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the ratio of the widget
      * The ratio will be applied if at least one of the dimension (width or height) is set to a behaviour
      * of DimensionBehaviour.MATCH_CONSTRAINT -- the dimension's value will be set to the other dimension * ratio.
@@ -1497,7 +1512,7 @@ public class ConstraintWidget {
         mDimensionRatioSide = dimensionRatioSide;
     }
 
-    /**
+   /**
      * Return the current ratio of this widget
      *
      * @return the dimension ratio (HORIZONTAL, VERTICAL, or UNKNOWN)
@@ -1506,7 +1521,7 @@ public class ConstraintWidget {
         return mDimensionRatio;
     }
 
-    /**
+   /**
      * Return the current side on which ratio will be applied
      *
      * @return HORIZONTAL, VERTICAL, or UNKNOWN
@@ -1515,7 +1530,7 @@ public class ConstraintWidget {
         return mDimensionRatioSide;
     }
 
-    /**
+   /**
      * Set the horizontal bias percent to apply when we have two opposite constraints of
      * equal strength
      *
@@ -1525,7 +1540,7 @@ public class ConstraintWidget {
         mHorizontalBiasPercent = horizontalBiasPercent;
     }
 
-    /**
+   /**
      * Set the vertical bias percent to apply when we have two opposite constraints of
      * equal strength
      *
@@ -1535,7 +1550,7 @@ public class ConstraintWidget {
         mVerticalBiasPercent = verticalBiasPercent;
     }
 
-    /**
+   /**
      * Set the minimum width of the widget
      *
      * @param w minimum width
@@ -1548,7 +1563,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the minimum height of the widget
      *
      * @param h minimum height
@@ -1561,7 +1576,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set both width and height of the widget
      *
      * @param w width
@@ -1578,7 +1593,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the position+dimension of the widget given left/top/right/bottom
      *
      * @param left   left side position of the widget
@@ -1634,7 +1649,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the position+dimension of the widget based on starting/ending positions on one dimension.
      *
      * @param start       Left/Top side position of the widget.
@@ -1649,7 +1664,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the positions for the horizontal dimension only
      *
      * @param left   left side position of the widget
@@ -1663,7 +1678,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the positions for the vertical dimension only
      *
      * @param top    top side position of the widget
@@ -1677,7 +1692,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Get the left/top position of the widget relative to the outer side of the container (right/bottom).
      *
      * @param orientation Orientation by which to find the relative positioning of the widget.
@@ -1693,7 +1708,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the left/top position of the widget relative to the outer side of the container (right/bottom).
      *
      * @param offset      Offset of the relative position.
@@ -1707,7 +1722,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the baseline distance relative to the top of the widget
      *
      * @param baseline the distance of the baseline relative to the widget's top
@@ -1717,7 +1732,7 @@ public class ConstraintWidget {
         hasBaseline = baseline > 0;
     }
 
-    /**
+   /**
      * Set the companion widget. Typically, this would be the real widget we
      * represent with this instance of ConstraintWidget.
      *
@@ -1727,7 +1742,7 @@ public class ConstraintWidget {
         mCompanionWidget = companion;
     }
 
-    /**
+   /**
      * Set the skip value for this widget. This can be used when a widget is in a container,
      * so that container can position the widget as if it was positioned further in the list
      * of widgets. For example, with Table, this is used to skip empty cells
@@ -1743,7 +1758,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Accessor for the skip value
      *
      * @return skip value
@@ -1752,7 +1767,7 @@ public class ConstraintWidget {
         return mContainerItemSkip;
     }
 
-    /**
+   /**
      * Set the horizontal weight (only used in chains)
      *
      * @param horizontalWeight Floating point value weight
@@ -1761,7 +1776,7 @@ public class ConstraintWidget {
         mWeight[DIMENSION_HORIZONTAL] = horizontalWeight;
     }
 
-    /**
+   /**
      * Set the vertical weight (only used in chains)
      *
      * @param verticalWeight Floating point value weight
@@ -1770,7 +1785,7 @@ public class ConstraintWidget {
         mWeight[DIMENSION_VERTICAL] = verticalWeight;
     }
 
-    /**
+   /**
      * Set the chain starting from this widget to be packed.
      * The horizontal bias will control how elements of the chain are positioned.
      *
@@ -1780,7 +1795,7 @@ public class ConstraintWidget {
         mHorizontalChainStyle = horizontalChainStyle;
     }
 
-    /**
+   /**
      * get the chain starting from this widget to be packed.
      * The horizontal bias will control how elements of the chain are positioned.
      *
@@ -1790,7 +1805,7 @@ public class ConstraintWidget {
         return mHorizontalChainStyle;
     }
 
-    /**
+   /**
      * Set the chain starting from this widget to be packed.
      * The vertical bias will control how elements of the chain are positioned.
      *
@@ -1800,7 +1815,7 @@ public class ConstraintWidget {
         mVerticalChainStyle = verticalChainStyle;
     }
 
-    /**
+   /**
      * Set the chain starting from this widget to be packed.
      * The vertical bias will control how elements of the chain are positioned.
      *
@@ -1810,18 +1825,18 @@ public class ConstraintWidget {
         return mVerticalChainStyle;
     }
 
-    /**
+   /**
      * Returns true if this widget should be used in a barrier
      */
     public boolean allowedInBarrier() {
         return mVisibility != GONE;
     }
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Connections
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Immediate connection to an anchor without any checks.
      *
      * @param startType  The type of anchor on this widget
@@ -1837,7 +1852,7 @@ public class ConstraintWidget {
         startAnchor.connect(endAnchor, margin, goneMargin, true);
     }
 
-    /**
+   /**
      * Connect the given anchors together (the from anchor should be owned by this widget)
      *
      * @param from    the anchor we are connecting from (of this widget)
@@ -1850,7 +1865,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Connect a given anchor of this widget to another anchor of a target widget
      *
      * @param constraintFrom which anchor of this widget to connect from
@@ -1866,7 +1881,7 @@ public class ConstraintWidget {
         connect(constraintFrom, target, constraintTo, 0);
     }
 
-    /**
+   /**
      * Connect a given anchor of this widget to another anchor of a target widget
      *
      * @param constraintFrom which anchor of this widget to connect from
@@ -2046,7 +2061,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Reset all the constraints set on this widget
      */
     public void resetAllConstraints() { resetAnchors();
@@ -2054,7 +2069,7 @@ public class ConstraintWidget {
         setHorizontalBiasPercent(DEFAULT_BIAS);
     }
 
-    /**
+   /**
      * Reset the given anchor
      *
      * @param anchor the anchor we want to reset
@@ -2115,7 +2130,7 @@ public class ConstraintWidget {
         anchor.reset();
     }
 
-    /**
+   /**
      * Reset all connections
      */
     public void resetAnchors() {
@@ -2132,7 +2147,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Given a type of anchor, returns the corresponding anchor.
      *
      * @param anchorType type of the anchor (LEFT, TOP, RIGHT, BOTTOM, BASELINE, CENTER_X, CENTER_Y)
@@ -2170,7 +2185,7 @@ public class ConstraintWidget {
         throw new AssertionError(anchorType.name());
     }
 
-    /**
+   /**
      * Accessor for the horizontal dimension behaviour
      *
      * @return dimension behaviour
@@ -2179,7 +2194,7 @@ public class ConstraintWidget {
         return mListDimensionBehaviors[DIMENSION_HORIZONTAL];
     }
 
-    /**
+   /**
      * Accessor for the vertical dimension behaviour
      *
      * @return dimension behaviour
@@ -2188,7 +2203,7 @@ public class ConstraintWidget {
         return mListDimensionBehaviors[DIMENSION_VERTICAL];
     }
 
-    /**
+   /**
      * Get the widget's {@link DimensionBehaviour} in an specific orientation.
      *
      * @param orientation
@@ -2204,7 +2219,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Set the widget's behaviour for the horizontal dimension
      *
      * @param behaviour the horizontal dimension's behaviour
@@ -2213,7 +2228,7 @@ public class ConstraintWidget {
         mListDimensionBehaviors[DIMENSION_HORIZONTAL] = behaviour;
     }
 
-    /**
+   /**
      * Set the widget's behaviour for the vertical dimension
      *
      * @param behaviour the vertical dimension's behaviour
@@ -2222,7 +2237,7 @@ public class ConstraintWidget {
         mListDimensionBehaviors[DIMENSION_VERTICAL] = behaviour;
     }
 
-    /**
+   /**
      * Test if you are in a Horizontal chain
      *
      * @return true if in a horizontal chain
@@ -2235,7 +2250,7 @@ public class ConstraintWidget {
         return false;
     }
 
-    /**
+   /**
      * Return the previous chain member if one exists
      *
      * @param orientation HORIZONTAL or VERTICAL
@@ -2254,7 +2269,7 @@ public class ConstraintWidget {
         return null;
     }
 
-    /**
+   /**
      * Return the next chain member if one exists
      *
      * @param orientation HORIZONTAL or VERTICAL
@@ -2273,7 +2288,7 @@ public class ConstraintWidget {
         return null;
     }
 
-    /**
+   /**
      * if in a horizontal chain return the left most widget in the chain.
      *
      * @return left most widget in chain or null
@@ -2303,7 +2318,7 @@ public class ConstraintWidget {
     }
 
 
-    /**
+   /**
      * Test if you are in a vertical chain
      *
      * @return true if in a vertical chain
@@ -2316,7 +2331,7 @@ public class ConstraintWidget {
         return false;
     }
 
-    /**
+   /**
      * if in a vertical chain return the top most widget in the chain.
      *
      * @return top most widget in chain or null
@@ -2345,7 +2360,7 @@ public class ConstraintWidget {
         return found;
     }
 
-    /**
+   /**
      * Determine if the widget is the first element of a chain in a given orientation.
      *
      * @param orientation Either {@link #HORIZONTAL} or {@link #VERTICAL}
@@ -2360,11 +2375,11 @@ public class ConstraintWidget {
     }
 
 
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
     // Constraints
-    /*-----------------------------------------------------------------------*/
+   /*-----------------------------------------------------------------------*/
 
-    /**
+   /**
      * Add this widget to the solver
      *
      * @param system the solver we want to add the widget to
@@ -2739,7 +2754,7 @@ public class ConstraintWidget {
         resolvedVertical = false;
     }
 
-    /**
+   /**
      * Used to select which widgets should be added to the solver first
      * @return
      */
@@ -2747,7 +2762,7 @@ public class ConstraintWidget {
         return this instanceof CoreVirtualLayout || this instanceof CoreGuideline;
     }
 
-    /**
+   /**
      * Resolves the dimension ratio parameters
      * (mResolvedDimensionRatioSide & mDimensionRatio)
      *
@@ -2813,7 +2828,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Apply the constraints in the system depending on the existing anchors, in one dimension
      *  @param system                the linear system we are adding constraints to
      * @param parentWrapContent
@@ -3312,7 +3327,7 @@ public class ConstraintWidget {
         }
     }
 
-    /**
+   /**
      * Update the widget from the values generated by the solver
      *
      * @param system the solver we get the values from.

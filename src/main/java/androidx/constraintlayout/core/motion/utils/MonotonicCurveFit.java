@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -274,7 +289,7 @@ public class MonotonicCurveFit extends CurveFit {
         return mT;
     }
 
-    /**
+   /**
      * Cubic Hermite spline
      *
      * @return
@@ -287,7 +302,7 @@ public class MonotonicCurveFit extends CurveFit {
                 + h * t1 * x;
     }
 
-    /**
+   /**
      * Cubic Hermite spline slope differentiated
      *
      * @return
@@ -298,7 +313,7 @@ public class MonotonicCurveFit extends CurveFit {
                 3 * h * t1 * x2 - 2 * h * t2 * x - 4 * h * t1 * x + h * t1;
     }
 
-    /**
+   /**
      * This builds a monotonic spline to be used as a wave function
      *
      * @param configString

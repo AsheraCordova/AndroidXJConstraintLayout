@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2018 The Android Open Source Project
  *
@@ -40,12 +55,12 @@ public class Optimizer {
     public static final int OPTIMIZATION_DEPENDENCY_ORDERING = 1 << 9;
     public static final int OPTIMIZATION_GROUPING = 1 << 10;
     public static final int OPTIMIZATION_STANDARD = OPTIMIZATION_DIRECT
-            /* | OPTIMIZATION_GROUPING */
-            /* | OPTIMIZATION_DEPENDENCY_ORDERING */
+           /* | OPTIMIZATION_GROUPING */
+           /* | OPTIMIZATION_DEPENDENCY_ORDERING */
                | OPTIMIZATION_CACHE_MEASURES
-            /* | OPTIMIZATION_GRAPH */
-            /* | OPTIMIZATION_GRAPH_WRAP */
-            /* | OPTIMIZATION_DIMENSIONS */
+           /* | OPTIMIZATION_GRAPH */
+           /* | OPTIMIZATION_GRAPH_WRAP */
+           /* | OPTIMIZATION_DIMENSIONS */
             ;
 
     // Internal use.
@@ -54,7 +69,7 @@ public class Optimizer {
     static final int FLAG_CHAIN_DANGLING = 1;
     static final int FLAG_RECOMPUTE_BOUNDS = 2;
 
-    /**
+   /**
      * Looks at optimizing match_parent
      *
      * @param container

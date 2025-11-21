@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2020 The Android Open Source Project
  *
@@ -124,7 +139,7 @@ public class ViewTransition {
         this.mSharedValueCurrent = sharedValueCurrent;
     }
 
-    /**
+   /**
      * Gets the type of transition to listen to.
      *
      * @return ONSTATE_TRANSITION_*
@@ -133,7 +148,7 @@ public class ViewTransition {
         return mOnStateTransition;
     }
 
-    /**
+   /**
      * Sets the type of transition to listen to.
      *
      * @param stateTransition
@@ -142,7 +157,7 @@ public class ViewTransition {
         this.mOnStateTransition = stateTransition;
     }
 
-    /**
+   /**
      * Gets the SharedValue it will be listening for.
      *
      * @return
@@ -151,14 +166,14 @@ public class ViewTransition {
         return mSharedValueTarget;
     }
 
-    /**
+   /**
      * sets the SharedValue it will be listening for.
      */
     public void setSharedValue(int sharedValue) {
         this.mSharedValueTarget = sharedValue;
     }
 
-    /**
+   /**
      * Gets the ID of the SharedValue it will be listening for.
      *
      * @return the id of the shared value
@@ -167,7 +182,7 @@ public class ViewTransition {
         return mSharedValueID;
     }
 
-    /**
+   /**
      * sets the ID of the SharedValue it will be listening for.
      */
     public void setSharedValueID(int sharedValueID) {

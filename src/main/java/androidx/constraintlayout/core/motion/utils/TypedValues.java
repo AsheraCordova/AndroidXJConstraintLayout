@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 /*
  * Copyright (C) 2021 The Android Open Source Project
  *
@@ -26,7 +41,7 @@ public interface TypedValues {
     public static final int FLOAT_MASK = 4;
     public static final int STRING_MASK = 8;
     
-    /**
+   /**
      * Used to set integer values
      *
      * @param id
@@ -35,7 +50,7 @@ public interface TypedValues {
      */
     boolean setValue(int id, int value);
 
-    /**
+   /**
      * Used to set float values
      *
      * @param id
@@ -44,7 +59,7 @@ public interface TypedValues {
      */
     boolean setValue(int id, float value);
 
-    /**
+   /**
      * Used to set String values
      *
      * @param id
@@ -53,7 +68,7 @@ public interface TypedValues {
      */
     boolean setValue(int id, String value);
 
-    /**
+   /**
      * Used to set boolean values
      *
      * @param id
@@ -134,7 +149,7 @@ public interface TypedValues {
                 S_PIVOT_TARGET,
         };
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
@@ -291,7 +306,7 @@ public interface TypedValues {
                 S_WAVE_PHASE,
         };
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
@@ -377,7 +392,7 @@ public interface TypedValues {
         public static final int TYPE_TRIGGER_RECEIVER = 311;
         public static final int TYPE_CROSS = 312;
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
@@ -444,7 +459,7 @@ public interface TypedValues {
                 S_PERCENT_Y,
         };
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
@@ -515,7 +530,7 @@ public interface TypedValues {
         public static final int TYPE_QUANTIZE_INTERPOLATOR_TYPE = 611;
         public static final int TYPE_QUANTIZE_INTERPOLATOR_ID = 612;
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
@@ -580,7 +595,7 @@ public interface TypedValues {
         public static final int TYPE_DIMENSION = 905;
         public static final int TYPE_REFERENCE = 906;
 
-        /**
+       /**
          * Method to go from String names of values to id of the values
          * IDs are use for efficiency
          *
